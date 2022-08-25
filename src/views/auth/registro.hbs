@@ -1,0 +1,42 @@
+
+<div class="container p-4">
+ <form action="/registro" method="post">
+   <div class="form-row">
+     <div class="col">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" placeholder="First name" id="name" name="name">
+    </div>
+    <div class="col">
+        <label for="apellidos">Last Name</label>
+      <input type="text" class="form-control" placeholder="Last name" id="apellidos" name="lastname">
+    </div>
+  </div>
+      <br>
+    <div class="form-row">
+     <div class="col">
+      <label for="name">Indentification</label>
+      <input type="text" class="form-control" placeholder="Identification" id="name" name="ident">
+    </div>
+    <div class="col">
+        <label for="Genero">Gender</label>
+         <select class="form-control" id="Genero" name="gender">
+       <option>gender</option>
+      <option>Male</option>
+      <option>Female</option>
+    </select>
+    </div>
+  </div>
+        <br>
+  <div class="form-group">
+    <label for="Diagnostics">Diagnostics</label>
+    <textarea class="form-control" id="Diagnostics" rows="3" name="diagnostics"></textarea>
+  </div>
+    <div class="form-group">
+         <button class="btn btn-success btn-block">
+            Enviar
+         </button>
+    </div>
+
+</form>
+
+</div>

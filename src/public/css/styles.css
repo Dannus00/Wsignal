@@ -1,0 +1,42 @@
+body{
+
+    background: #f5f6f5;
+    font-family:sans-serif;
+    overflow: hidden;    
+}
+
+.index{
+
+    height: 100%;
+    width: auto;
+     background: url('/img/banner_img.png');
+     background-position: center center;
+     background-repeat: no-repeat;
+     padding-top: 8rem;
+     
+    
+}
+
+.masthead{
+    color: black;
+    min-height: 30rem;
+    width: auto;
+    height: auto;
+
+   
+}
+
+.masthead h1{
+    font-size: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+@media (min-width: 992px){
+
+    .masthead h1{
+
+        font-size: 5.5rem;
+    }
+    
+}
