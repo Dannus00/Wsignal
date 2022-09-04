@@ -1,0 +1,32 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Lastname</th>
+      <th scope="col">Identification</th>
+      <th scope="col">Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each links}}
+    <tr>
+      <th scope="row">{{id}}</th>
+      <td>{{name}}</td>
+      <td>{{lastname}}</td>
+      <td>{{ident}}</td>
+      <td>{{timeago created_at}}</td>
+      <td> <a href="/edit/{{id}}" class="btn btn-primary">Edit</a></td>
+    </tr> 
+
+    {{else}}
+           <div class="col-md-4 mx-auto">
+              <div class="card card-body text center">
+                <p>No hay Pacientes registrados</p>
+                <a href="/registro">Registra uno</a>
+              </div>
+           </div>
+     {{/each}}
+     
+  </tbody>
+</table>

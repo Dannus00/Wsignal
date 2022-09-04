@@ -1,25 +1,25 @@
 <div class="container p-4">
-  <form action="/registro" method="post">
+  <form action="/edit/{{links.id}}" method="post">
     <div class="form-row p-2">
       <div class="col">
         <label for="name">Name</label>
-        <input type="text" class="form-control" placeholder="First name" id="name" name="name">
+        <input type="text" class="form-control" placeholder="First name" id="name" name="name" value="{{links.name}}">
       </div>
       <div class="col">
         <label for="apellidos">Last Name</label>
-        <input type="text" class="form-control" placeholder="Last name" id="apellidos" name="lastname">
+        <input type="text" class="form-control" placeholder="Last name" id="apellidos" name="lastname" value="{{links.lastname}}">
       </div>
     </div>
 
     <div class="form-row p-2">
       <div class="col">
         <label for="name">Indentification</label>
-        <input type="text" class="form-control" placeholder="Identification" id="name" name="ident">
+        <input type="text" class="form-control" placeholder="Identification" id="name" name="ident" value="{{links.ident}}">
       </div>
       <div class="col">
         <label for="Genero">Gender</label>
         <select class="form-control" id="Genero" name="gender">
-          <option>-----</option>
+          <option>{{links.gender}}</option>
           <option>Male</option>
           <option>Female</option>
         </select>
@@ -29,12 +29,12 @@
     <div class="form-row p-2">
       <div class="col">
         <label for="name">Age</label>
-        <input type="number" class="form-control" placeholder="Age" id="age" name="age" min="1" max="100">
+        <input type="number" class="form-control" placeholder="Age" id="age" name="age" min="1" max="100" value="{{links.age}}">
       </div>
       <div class="col">
         <label for="Genero">Blood Type</label>
         <select class="form-control" id="bt" name="bt">
-          <option>-----</option>
+          <option>{{links.bt}}</option>
           <option>A+</option>
           <option>B+</option>
           <option>O+</option>
@@ -49,6 +49,7 @@
       <div class="col">
         <label for="name">Date</label>
         <input type="date" class="form-control" placeholder="date" id="date" name="date">
+        <input type="text" class="form-control" value="{{links.date}}">
       </div>
     </div>
 
@@ -56,19 +57,19 @@
     <div class="form-row p-2">
       <div class="col">
         <label for="name">Occupation</label>
-        <input type="text" class="form-control" placeholder="Occupation" id="oc" name="oc">
+        <input type="text" class="form-control" placeholder="Occupation" id="oc" name="oc" value="{{links.oc}}">
       </div>
       <div class="col">
         <label for="Genero">Estado Civil</label>
         <select class="form-control" id="ec" name="ec">
-          <option>-----</option>
+          <option>{{links.ec}}</option>
           <option>Soltero</option>
           <option>Casado</option>
         </select>
       </div>
       <div class="col">
         <label for="name">Phone</label>
-        <input type="tel" class="form-control" placeholder="Phone" id="tel" name="phone">
+        <input type="tel" class="form-control" placeholder="Phone" id="tel" name="phone" value="{{links.phone}}">
       </div>
     </div>
 
@@ -80,11 +81,11 @@
     <div class="form-row p-2">
       <div class="col">
         <label for="name">Address</label>
-        <input type="text" class="form-control" placeholder="address" id="add" name="address">
+        <input type="text" class="form-control" placeholder="address" id="add" name="address" value="{{links.address}}">
       </div>
       <div class="col">
         <label for="apellidos">Place of residence</label>
-        <input type="text" class="form-control" placeholder="Place of residence" id="pr" name="pr">
+        <input type="text" class="form-control" placeholder="Place of residence" id="pr" name="pr" value="{{links.pr}}">
       </div>
     </div>
 

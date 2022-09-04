@@ -45,14 +45,20 @@ router.get('/registro',isLoggedIn,(req,res)=>{
 router.post('/registro', isLoggedIn, async (req,res)=>{
 
       console.log(req.body);
-      const {name, lastname,ident,gender,diagnostics } = req.body;
+      const {name, lastname,ident,gender,age,bt,date,oc,ec,phone,address,pr } = req.body;
       const newLink = {
            name,
            lastname,
            ident,
            gender,
-           diagnostics
-
+           age,
+           bt,
+           date,
+           oc,
+           ec,
+           phone,
+           address,
+           pr
       }; 
       console.log(newLink)
       await pool.query('INSERT INTO pacientes set ?', [newLink]);
