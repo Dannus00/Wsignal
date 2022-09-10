@@ -2,7 +2,9 @@ body{
 
     background: #f5f6f5;
     font-family:sans-serif;
-    overflow: hidden;    
+    overflow: auto;    
+    height: auto;
+    width: auto;
 }
 
 .index{

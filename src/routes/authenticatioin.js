@@ -5,6 +5,9 @@ const helpers = require('../lib/helpers');
 const {isLoggedIn} = require('../lib/out');
 const {isNotLoggedIn} = require('../lib/out');
 const pool = require('../database');
+const { readFile } = require('fs');
+const spawn = require('child_process').spawn
+const FileReader = require('filereader')
 
 //*********Signin***********+//
 router.get('/signin',isNotLoggedIn, (req,res)=>{
@@ -44,8 +47,27 @@ router.get('/registro',isLoggedIn,(req,res)=>{
 
 router.post('/registro', isLoggedIn, async (req,res)=>{
 
-      console.log(req.body);
-      const {name, lastname,ident,gender,age,bt,date,oc,ec,phone,address,pr } = req.body;
+      const {name, lastname,ident,gender,age,bt,date,oc,ec,phone,address,pr,ecg } = req.body;
+      let arg1 = '/home/alexander/Escritorio/records/a01m.mat'
+      console.log(ecg)
+
+      
+
+    const pythonProcess = spawn('python3', ['src/python/index.py', `${ecg}`])
+      
+      let pythonResponse = ""
+      pythonProcess.stdout.on('data', function (data) {
+        pythonResponse += data
+    
+       })
+
+       pythonProcess.stdout.on('end', function () {
+        console.log(pythonResponse)
+      
+    })
+    
+      
+      
       const newLink = {
            name,
            lastname,
@@ -60,10 +82,19 @@ router.post('/registro', isLoggedIn, async (req,res)=>{
            address,
            pr
       }; 
-      console.log(newLink)
+    
       await pool.query('INSERT INTO pacientes set ?', [newLink]);
       req.flash('Success', 'Paciente saved Successfully')
       res.redirect('/profile');
+})
+
+
+router.post('/registro2',  (req,res)=>{
+
+             console.log(req.body)
+             res.sendStatus(200)
+ 
+
 })
 
 
