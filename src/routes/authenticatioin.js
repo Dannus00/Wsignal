@@ -8,7 +8,8 @@ const pool = require('../database');
 const { readFile } = require('fs');
 const spawn = require('child_process').spawn
 const FileReader = require('filereader')
-
+const fs = require('fs')
+let ecg 
 //*********Signin***********+//
 router.get('/signin',isNotLoggedIn, (req,res)=>{
 
@@ -45,58 +46,44 @@ router.get('/registro',isLoggedIn,(req,res)=>{
     res.render('auth/registro')
 });
 
-router.post('/registro', isLoggedIn, async (req,res)=>{
-
-      const {name, lastname,ident,gender,age,bt,date,oc,ec,phone,address,pr,ecg } = req.body;
-      let arg1 = '/home/alexander/Escritorio/records/a01m.mat'
-      console.log(ecg)
-
-      
-
-    const pythonProcess = spawn('python3', ['src/python/index.py', `${ecg}`])
-      
-      let pythonResponse = ""
-      pythonProcess.stdout.on('data', function (data) {
-        pythonResponse += data
-    
-       })
-
-       pythonProcess.stdout.on('end', function () {
-        console.log(pythonResponse)
-      
-    })
-    
-      
-      
-      const newLink = {
-           name,
-           lastname,
-           ident,
-           gender,
-           age,
-           bt,
-           date,
-           oc,
-           ec,
-           phone,
-           address,
-           pr
-      }; 
-    
-      await pool.query('INSERT INTO pacientes set ?', [newLink]);
-      req.flash('Success', 'Paciente saved Successfully')
-      res.redirect('/profile');
-})
 
 
-router.post('/registro2',  (req,res)=>{
+router.post('/registro2', async (req,res)=>{
 
-             console.log(req.body)
+              let data = JSON.stringify(req.body)
+              ecg = data
+            
+             /*fs.writeFileSync('src/JSON/data.json',JSON.stringify({data},null,2))*/
              res.sendStatus(200)
  
 
 })
 
+router.post('/registro', isLoggedIn, async (req,res)=>{
+
+  const {name, lastname,ident,gender,age,bt,date,oc,ec,phone,address,pr } = req.body;
+  
+  console.log(ecg)
+  const newLink = {
+       name,
+       lastname,
+       ident,
+       gender,
+       age,
+       bt,
+       date,
+       oc,
+       ec,
+       phone,
+       address,
+       pr,
+       ecg
+  }; 
+
+  await pool.query('INSERT INTO pacientes set ?', [newLink]);
+  req.flash('Success', 'Paciente saved Successfully')
+  res.redirect('/profile');
+})
 
 
 

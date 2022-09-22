@@ -1,0 +1,48 @@
+
+<div class="box">
+<h1 class="row header">Ecg<sup></sup> Signal</h1>
+
+
+
+    <div id="target" class="row content"></div>
+
+
+   
+</div>
+
+    <script src="https://unpkg.com/@arction/lcjs@3.0.1/dist/lcjs.iife.js"></script>
+    <script src="https://unpkg.com/@arction/xydata@1.2.1/dist/xydata.iife.js"></script>
+    <script>
+
+
+    
+             
+    
+   
+        (async () => {
+             const {
+                lightningChart
+            } = lcjs 
+            
+         
+        
+
+            const chart = lightningChart().ChartXY({
+                // Set the chart into a div with id, 'target'. 
+                // Chart's size will automatically adjust to div's size. 
+                container: 'target'
+            })
+                .setTitle('My first Ecg') // Set chart title
+            
+           
+
+
+            // Add a line series.
+            const lineSeries = chart.addLineSeries()
+                .setName('My data')
+                .add({{encodeMyString data.ecg}})
+        })()
+    </script>
+
+
+

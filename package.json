@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@arction/lcjs": "^3.4.0",
+    "@arction/xydata": "^1.4.0",
     "bcryptjs": "^2.4.3",
     "child_process": "^1.0.2",
     "connect-flash": "^0.1.1",
@@ -21,6 +23,7 @@
     "express-validator": "^6.14.2",
     "filereader": "^0.10.3",
     "git": "^0.1.5",
+    "handlebars": "^4.7.7",
     "helper-timeago": "^0.1.0",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",

@@ -1,4 +1,4 @@
- <div class="container p-4">
+<div class="container p-4">
   <form action="/registro" method="post">
     <div class="form-row p-2">
       <div class="col">
@@ -90,57 +90,83 @@
 
 
     <div class="form-group p-2">
+
       <label for="exampleFormControlFile1">ecg data</label>
-      <input type="file" class="form-control-file" id="file" name="ecg">
+      <input type="file" class="form-control-file" id="file" >
+
+
     </div>
 
-
-
-    <script src="https://unpkg.com/blob-util@2.0.2/dist/blob-util.js"></script>
     <script>
-      
-      
-      
-      const input = document.querySelector(`input[type="file"]`).addEventListener("change", function () {
+
+      function read(e) {
+        const archivo = e.target.files[0];
+
+
 
         const reader = new FileReader();
-      
+        reader.onload = function (e) {
 
+          const data = e.target.result;
 
-        reader.addEventListener("load", () => {
-        console.log(reader.result)
-        var blob = blobUtil.arrayBufferToBlob(reader.result, '.mat')
-        console.log('here is a blob', blob);
-        console.log('its size is', blob.size);
-        console.log('its type is', blob.type);
+          const csv2json = (str, delimiter = ',') => {
+            const titles = str.slice(0, str.indexOf('\n')).split(delimiter);
+            const rows = str.slice(str.indexOf('\n') + 26).split('\n');
+            return rows.map(row => {
+              const values = row.split(delimiter);
+              return titles.reduce((object, curr, i) => (object[curr] = values[i], object), {})
+            });
+          }
+          let dat = csv2json(data)
+
+          const time2ms = time => {
+            let t = time.replaceAll("'", "")
+
+            let [seg, ms] = t.split('.');
+            let [min, sg] = seg.split(':');
+            ms = Number(ms) + Number(sg) * 1000 + Number(min) * 1000 * 60
+            return ms/1000
+          }
 
           
         
           
-          
-          fetch('/registro2', {
+          let ecgdata = dat.map(arr => {
+            let re = Number(arr["'ECG I'"])
+            let time = time2ms(arr["'Elapsed time'"])
+             
+            return { x: time, y: re }
+          });
+        
+          console.log(ecgdata.slice(0, -1))
+
+         fetch('/registro2', {
 
             // HTTP request type
             method: "POST",
-            headers: {
-              "Content-Type": "application/octet-stream",
-              "Content-length": blob.size
-            },
+            headers: { "Content-Type": "application/json" },
             // Sending our blob with our request
-            body: blob
+            body: JSON.stringify(ecgdata.slice(0, -1))
           })
-            .then(response => console.log('Blob Uploaded'))
+            .then(response => console.log("Upload"))
             .catch(err => console.error(err));
 
 
-        });
 
-        reader.readAsArrayBuffer(this.files[0])
-      })
+        };
+
+        reader.readAsText(archivo)
+
+      }
+
+      
+      document.querySelector('input[type="file"]').addEventListener('change', read);
 
     </script>
 
-    
+
+
+
     <div class="form-group p-2">
       <button class="btn btn-success btn-block">
         Enviar

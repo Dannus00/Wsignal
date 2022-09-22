@@ -13,6 +13,8 @@ const app = express();
 require('./lib/passport');
 
 //settings//
+app.use(express.json({limit: '1000kB'}));
+app.use(express.urlencoded({limit: '1000kB'}));
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.engine('.hbs',exphbs.engine({
