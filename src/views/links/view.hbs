@@ -1,47 +1,111 @@
 
-<div class="box">
-<h1 class="row header">Ecg<sup></sup> Signal</h1>
+<div class="container">
+    <h1 class="row header">Ecg<sup></sup> Signal</h1>
 
-
-
-    <div id="target" class="row content"></div>
+  <div id="signal" class="col">   
+    <div id="target" ></div>
+ </div>
 
 
    
 </div>
+     
 
-    <script src="https://unpkg.com/@arction/lcjs@3.0.1/dist/lcjs.iife.js"></script>
-    <script src="https://unpkg.com/@arction/xydata@1.2.1/dist/xydata.iife.js"></script>
+
+
+
+    {{!-- <script src="https://unpkg.com/@arction/lcjs@3.0.1/dist/lcjs.iife.js"></script> --}}
+    <script src="https://unpkg.com/@arction/lcjs@3.4.0/dist/lcjs.iife.js"></script>
+  {{!--   <script src="https://unpkg.com/@arction/xydata@1.2.1/dist/xydata.iife.js"></script> --}}
+    <script src="https://unpkg.com/@arction/xydata@1.4.0/dist/xydata.iife.js"></script> 
     <script>
 
-
-    
-             
-    
-   
-        (async () => {
+        /*  (async () => {
              const {
-                lightningChart
+                lightningChart,
+                Themes
             } = lcjs 
             
          
         
 
             const chart = lightningChart().ChartXY({
-                // Set the chart into a div with id, 'target'. 
-                // Chart's size will automatically adjust to div's size. 
-                container: 'target'
+               
+                theme: Themes.auroraBorealisNew, 
+                container: 'target',
+             
             })
-                .setTitle('My first Ecg') // Set chart title
+                .setTitle('My first Ecg') 
             
            
 
 
-            // Add a line series.
+           
             const lineSeries = chart.addLineSeries()
                 .setName('My data')
                 .add({{encodeMyString data.ecg}})
-        })()
+        })()*/
+
+
+// Extract required parts from LightningChartJS.
+const {
+    lightningChart,
+    AxisScrollStrategies,
+    Themes
+} = lcjs
+
+// Import data-generators from 'xydata'-library.
+const {
+    createSampledDataGenerator
+} = xydata
+
+// Create a XY Chart.
+const chart = lightningChart().ChartXY({
+    theme: Themes.cyberSpace,
+    container: 'target', 
+}).setTitle('ECG')
+
+// Create line series optimized for regular progressive X data.
+const series = chart.addLineSeries({
+    dataPattern: {
+        // pattern: 'ProgressiveX' => Each consecutive data point has increased X coordinate.
+        pattern: 'ProgressiveX',
+        // regularProgressiveStep: true => The X step between each consecutive data point is regular (for example, always `1.0`).
+        regularProgressiveStep: true,
+    }
+ })
+    // Destroy automatically outscrolled data (old data becoming out of scrolling axis range).
+    // Actual data cleaning can happen at any convenient time (not necessarily immediately when data goes out of range).
+    .setMaxPointCount(10000)
+    .setMouseInteractions(false)
+
+// Setup view nicely.
+chart.getDefaultAxisY()
+    .setTitle('mV')
+    .setInterval(-0.50, 1)
+    .setScrollStrategy(AxisScrollStrategies.expansion)
+
+chart.getDefaultAxisX()
+    .setTitle('milliseconds')
+    .setInterval(0, 10000)
+    .setScrollStrategy(AxisScrollStrategies.progressive)
+
+const point = {{encodeMyString data.ecg}}
+console.log(point)
+
+createSampledDataGenerator(point, 1, 10)
+    .setSamplingFrequency(1)
+    .setInputData(point)
+    .generate()
+    .setStreamBatchSize(48)
+    .setStreamInterval(50)
+    .setStreamRepeat(true)
+    .toStream()
+    .forEach(point => {
+        // Push the created points to the series.
+        series.add({ x: point.timestamp, y: point.data.y })
+    })
+
     </script>
 
 

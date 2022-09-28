@@ -2,37 +2,37 @@
   <form action="/edit/{{links.id}}" method="post">
     <div class="form-row p-2">
       <div class="col">
-        <label for="name">Name</label>
-        <input type="text" class="form-control" placeholder="First name" id="name" name="name" value="{{links.name}}">
+        <label for="name">Nombre</label>
+        <input type="text" class="form-control" placeholder="Nombre" id="name" name="name" value="{{links.name}}">
       </div>
       <div class="col">
-        <label for="apellidos">Last Name</label>
-        <input type="text" class="form-control" placeholder="Last name" id="apellidos" name="lastname" value="{{links.lastname}}">
+        <label for="apellidos">Apellidos</label>
+        <input type="text" class="form-control" placeholder="Apellidos" id="apellidos" name="lastname" value="{{links.lastname}}">
       </div>
     </div>
 
     <div class="form-row p-2">
       <div class="col">
-        <label for="name">Indentification</label>
-        <input type="text" class="form-control" placeholder="Identification" id="name" name="ident" value="{{links.ident}}">
+        <label for="name">Indentificación</label>
+        <input type="text" class="form-control" placeholder="Identificación" id="name" name="ident" value="{{links.ident}}">
       </div>
       <div class="col">
-        <label for="Genero">Gender</label>
+        <label for="Genero">Sexo</label>
         <select class="form-control" id="Genero" name="gender">
           <option>{{links.gender}}</option>
-          <option>Male</option>
-          <option>Female</option>
+          <option>Masculino</option>
+          <option>Femenino</option>
         </select>
       </div>
     </div>
 
     <div class="form-row p-2">
       <div class="col">
-        <label for="name">Age</label>
-        <input type="number" class="form-control" placeholder="Age" id="age" name="age" min="1" max="100" value="{{links.age}}">
+        <label for="name">Edad</label>
+        <input type="number" class="form-control" placeholder="Edad" id="age" name="age" min="1" max="100" value="{{links.age}}">
       </div>
       <div class="col">
-        <label for="Genero">Blood Type</label>
+        <label for="Genero">Tipo de sangre</label>
         <select class="form-control" id="bt" name="bt">
           <option>{{links.bt}}</option>
           <option>A+</option>
@@ -47,17 +47,17 @@
       </div>
 
       <div class="col">
-        <label for="name">Date</label>
-        <input type="date" class="form-control" placeholder="date" id="date" name="date">
-        <input type="text" class="form-control" value="{{links.date}}">
+        <label for="name">Fecha de nacimiento</label>
+        <input type="date" class="form-control" placeholder="Fecha de nacimiento" id="date" name="date">
+        
       </div>
     </div>
 
 
     <div class="form-row p-2">
       <div class="col">
-        <label for="name">Occupation</label>
-        <input type="text" class="form-control" placeholder="Occupation" id="oc" name="oc" value="{{links.oc}}">
+        <label for="name">Ocupación</label>
+        <input type="text" class="form-control" placeholder="Ocupación" id="oc" name="oc" value="{{links.oc}}">
       </div>
       <div class="col">
         <label for="Genero">Estado Civil</label>
@@ -65,11 +65,14 @@
           <option>{{links.ec}}</option>
           <option>Soltero</option>
           <option>Casado</option>
+          <option>Viudo</option>
+          <option>Divorsiado</option>
+          <option>Union libre</option>
         </select>
       </div>
       <div class="col">
-        <label for="name">Phone</label>
-        <input type="tel" class="form-control" placeholder="Phone" id="tel" name="phone" value="{{links.phone}}">
+        <label for="name">Celular</label>
+        <input type="tel" class="form-control" placeholder="Celular" id="tel" name="phone" value="{{links.phone}}">
       </div>
     </div>
 
@@ -98,3 +101,11 @@
   </form>
 
 </div>
+
+
+<script>
+ 
+  let da = new Date("{{encodeMyString links.date}}")
+  let d  = da.toLocaleDateString("fr-CA");
+  document.getElementById("date").setAttribute('value',d);
+</script>
