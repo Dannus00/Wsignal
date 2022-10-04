@@ -1,112 +1,280 @@
-
 <div class="container">
-    <h1 class="row header">Ecg<sup></sup> Signal</h1>
+    <h1 class="row header">Monitor de signos vitales </h1>
 
-  <div id="signal" class="col">   
-    <div id="target" ></div>
- </div>
+    <div id="signal" class="col">
+        <div id="target"></div>
+    </div>
 
 
-   
+
 </div>
-     
 
 
 
 
-    {{!-- <script src="https://unpkg.com/@arction/lcjs@3.0.1/dist/lcjs.iife.js"></script> --}}
-    <script src="https://unpkg.com/@arction/lcjs@3.4.0/dist/lcjs.iife.js"></script>
-  {{!--   <script src="https://unpkg.com/@arction/xydata@1.2.1/dist/xydata.iife.js"></script> --}}
-    <script src="https://unpkg.com/@arction/xydata@1.4.0/dist/xydata.iife.js"></script> 
-    <script>
 
-        /*  (async () => {
-             const {
-                lightningChart,
-                Themes
-            } = lcjs 
-            
-         
-        
 
-            const chart = lightningChart().ChartXY({
-               
-                theme: Themes.auroraBorealisNew, 
-                container: 'target',
-             
+<script src="https://unpkg.com/@arction/lcjs@3.4.0/dist/lcjs.iife.js"></script>
+
+<script src="https://unpkg.com/@arction/xydata@1.4.0/dist/xydata.iife.js"></script>
+<script>
+
+
+ const ecgdata = {{ encodeMyString data.ecg }}
+ const ppgdata = {{ encodeMyString data.ppg }}
+ const respdata = {{ encodeMyString data.resp }}
+ 
+
+
+    const {
+         lightningChart,
+         AxisScrollStrategies,
+         Themes,
+         UIElementBuilders,
+         UILayoutBuilders,
+      } = lcjs
+
+
+      const {
+         createProgressiveRandomGenerator,
+         createSampledDataGenerator
+      } = xydata
+
+
+       const channels = [
+               {
+                  shortName: "ECG/EKG",
+                  name: "Electrocardiogram",
+                  dataSet: ecgdata,
+                  color: "#00ff00",
+                  yStart: -1955,
+                  yEnd: 1195,
+               },
+               {
+                  shortName: "PPG",
+                  name: "photoplethysmogram",
+                  dataSet: ppgdata,
+                  color: "#00ff00",
+                  yStart: -1955,
+                  yEnd: 1195,
+               },
+               {
+                  shortName: "RESP",
+                  name: "rib cage",
+                  dataSet: respdata,
+                  color: "#00ff00",
+                  yStart: -1955,
+                  yEnd: 1195,
+               },
+            ];
+
+            const dashboard = lightningChart()
+               .Dashboard({
+                  numberOfRows: channels.length,
+                  numberOfColumns: 1,
+                  theme: Themes.auroraBorealis,
+                  container: 'target',
+               })
+
+
+
+            const chart1 = dashboard.createChartXY({
+               columnIndex: 0,
+               rowIndex: 0,
+               columnSpan: 1,
+               rowSpan: 1
             })
-                .setTitle('My first Ecg') 
-            
-           
+            const chart2 = dashboard.createChartXY({
+               columnIndex: 0,
+               rowIndex: 1,
+               columnSpan: 1,
+               rowSpan: 1
+            })
+
+            const chart3 = dashboard.createChartXY({
+               columnIndex: 0,
+               rowIndex: 2,
+               columnSpan: 1,
+               rowSpan: 1
+            })
 
 
-           
-            const lineSeries = chart.addLineSeries()
-                .setName('My data')
-                .add({{encodeMyString data.ecg}})
-        })()*/
+            chart1.setTitle('ECG/EKG')
+            chart1.getDefaultAxisY()
+               .setTitle('mV')
+               .setInterval(0, 1)
+               .setScrollStrategy(AxisScrollStrategies.expansion)
+
+            chart1.getDefaultAxisX()
+               .setTitle('miliseconds')
+               .setInterval(0, 400)
+               .setScrollStrategy(AxisScrollStrategies.progressive)
+
+            const series1 = chart1.addLineSeries({
+               dataPattern: {
+
+                  pattern: 'ProgressiveX',
+
+                  regularProgressiveStep: true,
+               }
+            })
 
 
-// Extract required parts from LightningChartJS.
-const {
-    lightningChart,
-    AxisScrollStrategies,
-    Themes
-} = lcjs
 
-// Import data-generators from 'xydata'-library.
-const {
-    createSampledDataGenerator
-} = xydata
+            createSampledDataGenerator(ecgdata, 1, 10)
+               .setSamplingFrequency(1)
+               .setInputData(ecgdata)
+               .generate()
+               .setStreamBatchSize(10)
+               .setStreamInterval(80)
+               .setStreamRepeat(true)
+               .toStream()
+               .forEach(ecgdata => {
 
-// Create a XY Chart.
-const chart = lightningChart().ChartXY({
-    theme: Themes.cyberSpace,
-    container: 'target', 
-}).setTitle('ECG')
+                  series1.add({ x: ecgdata.timestamp, y: ecgdata.data.y })
+               })
 
-// Create line series optimized for regular progressive X data.
-const series = chart.addLineSeries({
-    dataPattern: {
-        // pattern: 'ProgressiveX' => Each consecutive data point has increased X coordinate.
-        pattern: 'ProgressiveX',
-        // regularProgressiveStep: true => The X step between each consecutive data point is regular (for example, always `1.0`).
-        regularProgressiveStep: true,
-    }
- })
-    // Destroy automatically outscrolled data (old data becoming out of scrolling axis range).
-    // Actual data cleaning can happen at any convenient time (not necessarily immediately when data goes out of range).
-    .setMaxPointCount(10000)
-    .setMouseInteractions(false)
 
-// Setup view nicely.
-chart.getDefaultAxisY()
-    .setTitle('mV')
-    .setInterval(-0.50, 1)
-    .setScrollStrategy(AxisScrollStrategies.expansion)
 
-chart.getDefaultAxisX()
-    .setTitle('milliseconds')
-    .setInterval(0, 10000)
-    .setScrollStrategy(AxisScrollStrategies.progressive)
 
-const point = {{encodeMyString data.ecg}}
-console.log(point)
 
-createSampledDataGenerator(point, 1, 10)
-    .setSamplingFrequency(1)
-    .setInputData(point)
-    .generate()
-    .setStreamBatchSize(48)
-    .setStreamInterval(50)
-    .setStreamRepeat(true)
-    .toStream()
-    .forEach(point => {
-        // Push the created points to the series.
-        series.add({ x: point.timestamp, y: point.data.y })
+            chart2.setTitle('PPG')
+            chart2.getDefaultAxisY()
+               .setTitle('mV')
+               .setInterval(0, 1.5)
+               .setScrollStrategy(AxisScrollStrategies.expansion)
+
+            chart2.getDefaultAxisX()
+               .setTitle('miliseconds')
+               .setInterval(0, 400)
+               .setScrollStrategy(AxisScrollStrategies.progressive)
+
+
+            const series2 = chart2.addLineSeries({
+               dataPattern: {
+
+                  pattern: 'ProgressiveX',
+
+                  regularProgressiveStep: true,
+               }
+            })
+
+
+
+            createSampledDataGenerator(ppgdata, 1, 10)
+               .setSamplingFrequency(1)
+               .setInputData(ppgdata)
+               .generate()
+               .setStreamBatchSize(10)
+               .setStreamInterval(80)
+               .setStreamRepeat(true)
+               .toStream()
+               .forEach(ppgdata => {
+
+                  series2.add({ x: ppgdata.timestamp, y: ppgdata.data.y })
+               })
+
+
+            chart3.setTitle('RESP')
+            chart3.getDefaultAxisY()
+               .setTitle('mV')
+               .setInterval(0, 1.5)
+               .setScrollStrategy(AxisScrollStrategies.expansion)
+
+            chart3.getDefaultAxisX()
+               .setTitle('miliseconds')
+               .setInterval(0, 1000)
+               .setScrollStrategy(AxisScrollStrategies.progressive)
+
+
+            const series3 = chart3.addLineSeries({
+               dataPattern: {
+
+                  pattern: 'ProgressiveX',
+
+                  regularProgressiveStep: true,
+               }
+            })
+
+
+
+            createSampledDataGenerator(respdata, 1, 10)
+               .setSamplingFrequency(1)
+               .setInputData(respdata)
+               .generate()
+               .setStreamBatchSize(10)
+               .setStreamInterval(50)
+               .setStreamRepeat(true)
+               .toStream()
+               .forEach(respdata => {
+
+                  series3.add({ x: respdata.timestamp, y: respdata.data.y })
+               })
+    /*const {
+        lightningChart,
+        AxisScrollStrategies,
+        Themes
+    } = lcjs
+
+    // Import data-generators from 'xydata'-library.
+    const {
+        createSampledDataGenerator
+    } = xydata
+
+    // Create a XY Chart.
+    const chart = lightningChart().ChartXY({
+        theme: Themes.sunset,
+        container: 'target',
+    }).setTitle('ECG')
+
+    // Create line series optimized for regular progressive X data.
+    const series = chart.addLineSeries({
+        dataPattern: {
+            // pattern: 'ProgressiveX' => Each consecutive data point has increased X coordinate.
+            pattern: 'ProgressiveX',
+            // regularProgressiveStep: true => The X step between each consecutive data point is regular (for example, always `1.0`).
+            regularProgressiveStep: true,
+        }
     })
+        // Destroy automatically outscrolled data (old data becoming out of scrolling axis range).
+        // Actual data cleaning can happen at any convenient time (not necessarily immediately when data goes out of range).
+        .setMaxPointCount(10000)
+        .setMouseInteractions(false)
 
-    </script>
+
+    const point = {{ encodeMyString data.ecg }}
+    console.log(point)
+    const resultx = point.map((obj) => Object.values(obj)[0]);
+    const resulty = point.map((obj) => Object.values(obj)[1]);
+
+    var maxX = Math.max.apply(Math, resultx);
+    var minX = Math.min.apply(Math, resultx);
+    var maxY = Math.max.apply(Math, resulty);
+    var minY = Math.min.apply(Math, resulty);
+    // Setup view nicely.
+    chart.getDefaultAxisY()
+        .setTitle('mV')
+        .setInterval(minY - 0.10, maxY + 0.10)
+        .setScrollStrategy(AxisScrollStrategies.expansion)
+
+    chart.getDefaultAxisX()
+        .setTitle('milliseconds')
+        .setInterval(minX, 3000)
+        .setScrollStrategy(AxisScrollStrategies.progressive)
 
 
 
+    createSampledDataGenerator(point, 1, 10)
+        .setSamplingFrequency(1)
+        .setInputData(point)
+        .generate()
+        .setStreamBatchSize(48)
+        .setStreamInterval(50)
+        .setStreamRepeat(true)
+        .toStream()
+        .forEach(point => {
+            // Push the created points to the series.
+            series.add({ x: point.timestamp, y: point.data.y })
+        })*/
+
+</script>

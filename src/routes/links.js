@@ -22,6 +22,18 @@ router.get('/edit/:id',isLoggedIn, async (req,res) =>{
 
 });
 
+router.get('/delete/:id', isLoggedIn, async (req,res)=>{
+
+    
+    //console.log(req.params.id);
+    //res.send('Deleted');
+
+    const { id } = req.params;
+    await pool.query('DELETE FROM database_medical.pacientes WHERE ID = ?', [id]);
+    req.flash('Success', 'Link Romoved Successfully')
+    res.redirect('/list');
+});
+
 router.post('/edit/:id', isLoggedIn, async (req,res)=>{
     const { id } = req.params;
     
@@ -48,14 +60,9 @@ router.post('/edit/:id', isLoggedIn, async (req,res)=>{
 
 router.get('/view/:id',isLoggedIn, async (req,res) =>{
     const { id } = req.params;
-    const data = await pool.query('SELECT ecg FROM database_medical.pacientes WHERE id =?', [id]);
-    
-    var json = JSON.stringify(data);
-    
-    console.log(json)
+    const data = await pool.query('SELECT ecg,ppg,resp FROM database_medical.pacientes WHERE id =?', [id]);
     
     
-    /*fs.writeFileSync('src/JSON/data.json',JSON.stringify({dat},null,2))*/
     res.render('links/view', {data: data[0]});
 
 });

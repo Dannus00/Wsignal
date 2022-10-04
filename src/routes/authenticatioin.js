@@ -10,6 +10,8 @@ const spawn = require('child_process').spawn
 const FileReader = require('filereader')
 const fs = require('fs')
 let ecg 
+let ppg
+let resp
 //*********Signin***********+//
 router.get('/signin',isNotLoggedIn, (req,res)=>{
 
@@ -50,8 +52,11 @@ router.get('/registro',isLoggedIn,(req,res)=>{
 
 router.post('/registro2', async (req,res)=>{
 
-              let data = JSON.stringify(req.body)
-              ecg = data
+              
+              ecg = JSON.stringify(req.body[0])
+              ppg = JSON.stringify(req.body[1])
+              resp = JSON.stringify(req.body[2])
+             
             
              /*fs.writeFileSync('src/JSON/data.json',JSON.stringify({data},null,2))*/
              res.sendStatus(200)
@@ -63,7 +68,7 @@ router.post('/registro', isLoggedIn, async (req,res)=>{
 
   const {name, lastname,ident,gender,age,bt,date,oc,ec,phone,address,pr } = req.body;
   
-  console.log(ecg)
+  
   const newLink = {
        name,
        lastname,
@@ -77,7 +82,9 @@ router.post('/registro', isLoggedIn, async (req,res)=>{
        phone,
        address,
        pr,
-       ecg
+       ecg,
+       ppg,
+       resp
   }; 
 
   await pool.query('INSERT INTO pacientes set ?', [newLink]);

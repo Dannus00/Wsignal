@@ -94,8 +94,8 @@
 
     <div class="form-group p-2">
 
-      <label for="exampleFormControlFile1">datos ecg</label>
-      <input type="file" class="form-control-file" id="file" >
+      <label for="exampleFormControlFile1">datos ECG, PPG,RESP</label>
+      <input type="file" class="form-control-file" id="file">
 
 
     </div>
@@ -106,13 +106,69 @@
         const archivo = e.target.files[0];
 
 
+        function csvToArray(str, delimiter = ",") {
+
+
+          const headers = str.slice(0, str.indexOf("\n", "\r")).split(delimiter);
+
+
+          const rows = str.slice(str.indexOf("\n") + 1).split("\n");
+
+
+
+
+
+          const arr = rows.map(function (row) {
+            const values = row.split(delimiter);
+            const el = headers.reduce(function (object, header, index) {
+              object[header] = values[index];
+              return object;
+            }, {});
+            return el;
+          });
+
+
+          return arr;
+        }
 
         const reader = new FileReader();
         reader.onload = function (e) {
 
           const data = e.target.result;
+          const d = data.replace(/[\r]/g, '');
+          const dat = csvToArray(d)
 
-          const csv2json = (str, delimiter = ',') => {
+
+
+          let ppgdata = dat.map(arr => {
+            let time = Number(arr['Time [s]'])
+            let re = Number(arr[' PLETH'])
+
+            return { x: time, y: re }
+          });
+
+          let ecgdata = dat.map(arr => {
+            let time = Number(arr['Time [s]'])
+            let re = Number(arr[" II"])
+
+            return { x: time, y: re }
+          });
+
+          let respdata = dat.map(arr => {
+            let time = Number(arr['Time [s]'])
+            let re = Number(arr[" RESP"])
+
+            return { x: time, y: re }
+          });
+
+          console.log(ecgdata)
+          console.log(ppgdata)
+          console.log(respdata)
+
+          let vector = [ecgdata, ppgdata, respdata]
+          console.log(vector)
+
+          /*const csv2json = (str, delimiter = ',') => {
             const titles = str.slice(0, str.indexOf('\n')).split(delimiter);
             const rows = str.slice(str.indexOf('\n') + 26).split('\n');
             return rows.map(row => {
@@ -120,36 +176,36 @@
               return titles.reduce((object, curr, i) => (object[curr] = values[i], object), {})
             });
           }
-          let dat = csv2json(data)
+          let dat = csv2json(data)*/
 
-          const time2ms = time => {
+          /*const time2ms = time => {
             let t = time.replaceAll("'", "")
 
             let [seg, ms] = t.split('.');
             let [min, sg] = seg.split(':');
             ms = Number(ms) + Number(sg) * 1000 + Number(min) * 1000 * 60
             return ms/1000
-          }
+          }*/
 
-          
-        
-          
-          let ecgdata = dat.map(arr => {
+
+
+
+          /* ecgdata = dat.map(arr => {
             let re = Number(arr["'ECG I'"])
             let time = time2ms(arr["'Elapsed time'"])
-             
-            return { x: time, y: re }
-          });
-        
-          console.log(ecgdata.slice(0, -1))
 
-         fetch('/registro2', {
+            return { x: time, y: re }
+          });*/
+
+          /*console.log(ecgdata.slice(0, -1))*/
+
+          fetch('/registro2', {
 
             // HTTP request type
             method: "POST",
             headers: { "Content-Type": "application/json" },
             // Sending our blob with our request
-            body: JSON.stringify(ecgdata.slice(0, -1))
+            body: JSON.stringify(vector)
           })
             .then(response => console.log("Upload"))
             .catch(err => console.error(err));
@@ -162,7 +218,7 @@
 
       }
 
-      
+
       document.querySelector('input[type="file"]').addEventListener('change', read);
 
     </script>
