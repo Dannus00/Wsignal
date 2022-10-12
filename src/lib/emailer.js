@@ -5,18 +5,7 @@ require('dotenv').config()
 
 
 
-/* const createTrans = () => {
- 
-    const transport = nodemailer.createTransport(
-    nodemailerSendgrid({
-        apiKey: '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'
-    })
-);
 
-        return transport;
-
-}
- */
  const sendMail = async (user) =>{
  
             sgMail.setApiKey(process.env.emakey)
