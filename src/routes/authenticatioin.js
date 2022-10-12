@@ -92,7 +92,34 @@ router.post('/registro', isLoggedIn, async (req,res)=>{
   res.redirect('/profile');
 })
 
+router.get('/ultrasecretsadmins', (req,res)=>{
+
+    res.render('auth/secretadmins')
+
+});
+
+router.post('/admins', passport.authenticate('local.admins',{
+
+    successRedirect: '/adminregistsecret',
+    failureRedirect: '/ultrasecretsadmins',
+    failureFlash:true
 
 
+}));
+
+
+router.get('/adminregistsecret',(req,res)=>{
+
+    res.render('auth/adminregist')
+});
+
+router.post('/adminregistsecret', passport.authenticate('local.adminR',{
+
+    successRedirect: '/',
+    failureRedirect: '/adminregistsecret',
+    failureFlash:true
+
+
+}));
 
 module.exports = router;

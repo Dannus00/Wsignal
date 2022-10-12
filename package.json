@@ -12,6 +12,7 @@
   "dependencies": {
     "@arction/lcjs": "^3.4.0",
     "@arction/xydata": "^1.4.0",
+    "@sendgrid/mail": "^7.7.0",
     "bcryptjs": "^2.4.3",
     "child_process": "^1.0.2",
     "connect-flash": "^0.1.1",
@@ -29,11 +30,14 @@
     "moment": "^2.29.4",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
+    "nodemailer": "^6.8.0",
+    "nodemailer-sendgrid": "^1.0.3",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
     "timeago.js": "^4.0.2"
   },
   "devDependencies": {
+    "dotenv": "^16.0.3",
     "nodemon": "^2.0.19"
   }
 }
