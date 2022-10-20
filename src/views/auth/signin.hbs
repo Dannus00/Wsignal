@@ -1,28 +1,118 @@
-<div class="container p-4">
-    <div class="row">
-        <div class="col-md-6 mx-auto">
-            <div class="card text-center">
-                <div class="card-header">
-                    <h3>Sign in</h3>
-                </div>
-                <div class="card-body">
-                    <img src="/img/service.png" alt="logo" class="card-img-top mx-auto m-2 rounded-circle w-50">
-                    <form action="/signin" method="post">
-                       
-                        <div class="form-group">
-                            <input type="text" name="username" placeholder="username" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" name="password" placeholder="password" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <button class="btn btn-success btn-block">
-                                Enviar
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+{{!-- <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #cce2f1;">
+        <div class="container">
+            <a class="navbar-brand" href="/">🩺 MedicalSignal 🩺</a>
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item">
+                    <a href="/signin" class="nav-link">Inicio</a>
+                </li>
+
+
+            </ul>
         </div>
+    </nav> --}}
+
+
+
+<div class="d-flex justify-content-center align-items-center mt-5">
+
+
+    <div class="card" id="cardi">
+
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item text-center">
+                <a class="nav-link active btl" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
+                    aria-controls="pills-home" aria-selected="true">Doctores</a>
+            </li>
+            <li class="nav-item text-center" id="item">
+                <a class="nav-link btr" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
+                    aria-controls="pills-profile" aria-selected="false">Pacientes</a>
+            </li>
+
+        </ul>
+        <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+
+                <div class="container " id="conta1">
+                    <div class="row">
+                        <div class="col mx-auto">
+                            <div class="card text-center">
+                                <div class="card-header">
+                                    <h3>Iniciar Sesion</h3>
+                                </div>
+                                <div class="card-body">
+                                    <img src="/img/service.png" alt="logo"
+                                        class="card-img-top mx-auto m-2 rounded-circle w-50">
+                                    <form action="/signin" method="post">
+
+                                        <div class="form-group">
+                                            <input type="text" name="username" placeholder="Usuario"
+                                                class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" name="password" placeholder="Contraseña"
+                                                class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <button class="btn btn-success btn-block">
+                                                Enviar
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+
+
+                <div class="container" id="conta1">
+                    <div class="row">
+                        <div class="col mx-auto">
+                            <div class="card text-center">
+                                <div class="card-header">
+                                    <h3>Iniciar Sesion</h3>
+                                </div>
+                                <div class="card-body">
+                                    <img src="/img/lesion.png" alt="logo"
+                                        class="card-img-top mx-auto m-2 rounded-circle w-50">
+                                    <form action="/signin" method="post">
+
+                                        <div class="form-group">
+                                            <input type="text" name="username" placeholder="Usuario"
+                                                class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" name="password" placeholder="Contraseña"
+                                                class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <button class="btn btn-success btn-block">
+                                                Enviar
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+
+
+
     </div>
+
+
 </div>

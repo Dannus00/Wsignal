@@ -4,9 +4,9 @@ const exphbs = require('express-handlebars');
 const path = require('path');
 const flash = require('connect-flash');
 const session = require('express-session');
+const sessionadmin = require('express-session');
 const mysqlstore = require('express-mysql-session');
 const passport =require('passport');
-
 const {database} = require('./keys')
 //inicializacion//
 const app = express();
@@ -41,6 +41,7 @@ app.use(express.json());
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
+
 
 // Global Variables //
 app.use((req,res, next)=>{

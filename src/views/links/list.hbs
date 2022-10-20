@@ -1,34 +1,58 @@
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">Lastname</th>
-      <th scope="col">Identification</th>
-      <th scope="col">Time</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each links}}
-    <tr>
-      <th scope="row">{{id}}</th>
-      <td>{{name}}</td>
-      <td>{{lastname}}</td>
-      <td>{{ident}}</td>
-      <td>{{timeago created_at}}</td>
-      <td> <a href="/edit/{{id}}" class="btn btn-primary">Editar</a></td>
-      <td><a href="/view/{{id}}" class="btn btn-info">Visualizar</a></td>
-      <td><a href="/delete/{{id}}" class="btn btn-danger">Borrar</a></td>
-    </tr> 
 
-    {{else}}
-           <div class="col-md-4 mx-auto">
-              <div class="card card-body text center">
-                <p>No hay Pacientes registrados</p>
-                <a href="/registro">Registra uno</a>
-              </div>
-           </div>
-     {{/each}}
-     
-  </tbody>
-</table>
+
+<nav class="navbar navbar-expand-lg navbar-light " style="background-color: #cce2f1;">
+  <div class="container">
+    <a class="navbar-brand" href="/">🩺 MedicalSignal 🩺</a>
+    <ul class="navbar-nav ml-auto">
+
+      <li class="nav-item">
+        <a href="/profile" class=" nav-link">Perfil</a>
+      </li>
+      <li class="nav-item">
+        <a href="/logout" class="nav-link">Cerrar sesión</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+
+
+
+<div class="p-4" id="lista">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Lastname</th>
+        <th scope="col">Identification</th>
+        {{!-- <th scope="col">Time</th> --}}
+      </tr>
+    </thead>
+    <tbody>
+      {{#each links}}
+      <tr>
+        <th scope="row">{{id}}</th>
+        <td>{{name}}</td>
+        <td>{{lastname}}</td>
+        <td>{{ident}}</td>
+        {{!-- <td>{{timeago created_at}}</td> --}}
+        <td> <a href="/edit/{{id}}" class="btn btn-primary">Editar</a></td>
+        <td><a href="/view/{{id}}" class="btn btn-info">Visualizar</a></td>
+        <td><a href="/delete/{{id}}" class="btn btn-danger">Borrar</a></td>
+      </tr>
+
+      {{else}}
+      <div class="col-md-4 mx-auto">
+        <div class="card card-body text center">
+          <p>No hay Pacientes registrados</p>
+          <a href="/registro">Registra uno</a>
+        </div>
+      </div>
+      {{/each}}
+
+    </tbody>
+  </table>
+</div>
+

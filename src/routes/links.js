@@ -2,15 +2,16 @@ const express = require('express');
 const router = express.Router();
 const {isLoggedIn} = require('../lib/out');
 const pool = require('../database');
-const fs = require('fs')
+
 
 
 router.get('/list',isLoggedIn, async(req,res)=>{
 
 
-    const links = await pool.query('SELECT * FROM database_medical.pacientes');
-    console.log(links)
+    const links = await pool.query('SELECT id,name,lastname,ident,created_at FROM database_medical.pacientes');
+  
     res.render('links/list',{links})
+
 
 });
 
@@ -60,7 +61,7 @@ router.post('/edit/:id', isLoggedIn, async (req,res)=>{
 
 router.get('/view/:id',isLoggedIn, async (req,res) =>{
     const { id } = req.params;
-    const data = await pool.query('SELECT ecg,ppg,resp FROM database_medical.pacientes WHERE id =?', [id]);
+    const data = await pool.query('SELECT ecg,ppg,resp,spo2,puls,rp FROM database_medical.pacientes WHERE id =?', [id]);
     
     
     res.render('links/view', {data: data[0]});

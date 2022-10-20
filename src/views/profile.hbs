@@ -1,41 +1,64 @@
-<container class="p-4">
-    <div class="row">
+<body id="bod">
+  
+
+<nav class="navbar navbar-expand-lg navbar-light " style="background-color: #cce2f1;">
+ <div class="container">
+    <a class="navbar-brand" href="/">🩺 MedicalSignal 🩺</a>
+   <ul class="navbar-nav ml-auto">
+ 
+        <li class="nav-item">
+          <a href="/profile"  class=" nav-link font-weight-bold">Perfil</a>
+        </li>
+        <li class="nav-item">
+          <a href="/logout" class="nav-link font-weight-bold">Cerrar sesión</a>
+        </li>
+
+   </ul>
+ </div>
+</nav>
+
+
+<container>
+    <div class="row"  id="profil">
         <div class="col-md-4 ml-5">
-            <div class="card text-center">
-                <div class="card-body">
-                    <h3> Bienvenido Dr. {{user.username}} </h3>
-                </div>
-            </div>
+            
+                    <h3 class="font-weight-bold"> Bienvenido Dr. {{user.username}} </h3>
+                    <p class="lead mb-o" style="font-size: 18px;">
+                      Realiza fácilmente la historia clinica de tu pacientes.
+                      <br>
+                      Visualiza las señales fisiologicas y sus parametros
+                    </p>
         </div>
     </div>
 </container>
 
-<div class="row p-2" style="background-color:#cce2f1"  >
-   <h3 class="mb-md-3 col-12 col-md-12 text-center font-weight-bold">Servicios Disponibles</h3>
-    <div class="col-sm-4 mx-auto text-center">
-      <div class="card">
+<div class="row p-2"  id="profile" >
+  {{!-- <div class="row p-2" style="background-color:#cce2f1" id="profile" ></div> --}}
+   <h3 class="mb-md-3 col-12 col-md-12 text-center font-weight-bold" style="color: #0033a0;">Servicios Disponibles</h3>
+    <div class="col-sm-4 mx-auto text-center profile ">
+      <div class="card shadow-lg">
         <a href="/registro" class="card-link">
         <div class="card-body">
            <div class="card-title">
                 
                 <img src="/img/medical-report-2374867-1988327.png" alt="logo" class="mx-auto m-2">
            </div>
-              <h6 style="color:black;">Registre sus Nuevos paciente y su historial clinico</h6>
+              <h6 class="font-weight-bold" style="color:black;">Registre sus Nuevos paciente y su historial clinico</h6>
               
         </div>
         </a>
       </div>
     </div>
 
-      <div class="col-sm-4 mx-auto text-center">
-      <div class="card">
+      <div class="col-sm-4 mx-auto text-center profile">
+      <div class="card shadow-lg">
         <a href="/list" class="card-link">
         <div class="card-body">
            <div class="card-title">
                 
                 <img src="/img/ecg-monitor-2374869-1988329.png" alt="logo" class="mx-auto m-2">
            </div>
-              <h6 style="color:black;">Seguimiento de los Paciente Actuales</h6>
+              <h6 class="font-weight-bold" style="color:black;">Seguimiento de los Paciente Actuales</h6>
               
         </div>
         </a>
@@ -44,3 +67,4 @@
 
 </div>
 
+</body>

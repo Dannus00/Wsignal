@@ -1,3 +1,20 @@
+<nav class="navbar navbar-expand-lg navbar-light " style="background-color: #cce2f1;">
+  <div class="container">
+    <a class="navbar-brand" href="/">🩺 MedicalSignal 🩺</a>
+    <ul class="navbar-nav ml-auto">
+
+      <li class="nav-item">
+        <a href="/profile" class=" nav-link">Perfil</a>
+      </li>
+      <li class="nav-item">
+        <a href="/logout" class="nav-link">Cerrar sesión</a>
+      </li>
+
+    </ul>
+  </div>
+</nav>
+
+
 <div class="container p-4">
   <form action="/registro" method="post">
     <div class="form-row p-2">
@@ -94,10 +111,17 @@
 
     <div class="form-group p-2">
 
-      <label for="exampleFormControlFile1">datos ECG, PPG,RESP</label>
-      <input type="file" class="form-control-file" id="file">
+    <div class="row">
+      <div class="col">
+      <label for="exampleFormControlFile1">Señales Fisiologicas (ECG, PPG,RESP)</label>
+      <input type="file" class="form-control-file" id="file1">
+      </div>
 
-
+      <div class="col">
+      <label for="file2">Parametros Fisiologicos (Spo2,heart rate,respiratory rate)</label>
+      <input type="file" class="form-control-file" id="file2">
+      </div>
+  </div>
     </div>
 
     <script>
@@ -168,36 +192,7 @@
           let vector = [ecgdata, ppgdata, respdata]
           console.log(vector)
 
-          /*const csv2json = (str, delimiter = ',') => {
-            const titles = str.slice(0, str.indexOf('\n')).split(delimiter);
-            const rows = str.slice(str.indexOf('\n') + 26).split('\n');
-            return rows.map(row => {
-              const values = row.split(delimiter);
-              return titles.reduce((object, curr, i) => (object[curr] = values[i], object), {})
-            });
-          }
-          let dat = csv2json(data)*/
 
-          /*const time2ms = time => {
-            let t = time.replaceAll("'", "")
-
-            let [seg, ms] = t.split('.');
-            let [min, sg] = seg.split(':');
-            ms = Number(ms) + Number(sg) * 1000 + Number(min) * 1000 * 60
-            return ms/1000
-          }*/
-
-
-
-
-          /* ecgdata = dat.map(arr => {
-            let re = Number(arr["'ECG I'"])
-            let time = time2ms(arr["'Elapsed time'"])
-
-            return { x: time, y: re }
-          });*/
-
-          /*console.log(ecgdata.slice(0, -1))*/
 
           fetch('/registro2', {
 
@@ -219,8 +214,91 @@
       }
 
 
-      document.querySelector('input[type="file"]').addEventListener('change', read);
+        function read2(e) {
+        const archivo = e.target.files[0];
 
+
+        function csvToArray(str, delimiter = ",") {
+
+
+          const headers = str.slice(0, str.indexOf("\n", "\r")).split(delimiter);
+
+
+          const rows = str.slice(str.indexOf("\n") + 1).split("\n");
+
+
+
+
+
+          const arr = rows.map(function (row) {
+            const values = row.split(delimiter);
+            const el = headers.reduce(function (object, header, index) {
+              object[header] = values[index];
+              return object;
+            }, {});
+            return el;
+          });
+
+
+          return arr;
+        }
+
+        const reader = new FileReader();
+        reader.onload = function (e) {
+
+          const data = e.target.result;
+          const d = data.replace(/[\r]/g, '');
+          const dat = csvToArray(d)
+
+
+
+                     
+            let sp02 = dat.map(arr => {
+
+               let re = Number(arr[' SpO2'])
+
+               return re
+            });
+            let puls = dat.map(arr => {
+
+               let re = Number(arr[' PULSE'])
+
+               return re
+            });
+            let rp = dat.map(arr => {
+
+               let re = Number(arr[' RESP'])
+
+               return re
+            });
+
+             let vector = [sp02,puls, rp]
+    
+
+
+
+          fetch('/registro3', {
+
+            // HTTP request type
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            // Sending our blob with our request
+            body: JSON.stringify(vector)
+          })
+            .then(response => console.log("Upload"))
+            .catch(err => console.error(err));
+
+
+
+        };
+
+        reader.readAsText(archivo)
+
+      }
+
+
+      document.getElementById("file1").addEventListener('change', read);
+      document.getElementById("file2").addEventListener('change', read2);
     </script>
 
 

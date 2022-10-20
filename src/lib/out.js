@@ -9,7 +9,7 @@ module.exports = {
 
         }
 
-        return res.redirect('/signin');
+        return res.redirect('/');
     },
 
 

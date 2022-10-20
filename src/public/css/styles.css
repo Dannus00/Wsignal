@@ -5,7 +5,11 @@ body {
     overflow: auto;
     height: auto;
     width: auto;
+    margin: 0%;
+    padding: 0%;
 }
+
+
 
 .index {
 
@@ -44,6 +48,36 @@ body {
 }
 
 
+#cardi{
+  
+    width: 600px;
+    border:none;
+  
+  }
+  
+  #conta1{
+    width: 600px;
+  }
+  
+
+  #pills-tab{
+  
+    display:table !important;
+    width:100%;
+  }
+  
+  #pills-tab .nav-link {
+      border-radius: 0px;
+          border-bottom: 1px solid #0d6efd40;
+  
+  }
+  
+  #item{
+        display: table-cell;
+         background: #0d6efd2e;
+  }
+  
+
 
 
 #target {
@@ -54,6 +88,33 @@ body {
     margin: 2px;
 
 }
+
+#lista{
+
+    height: 90%;
+    width: 100%;
+    margin: 2px;
+}
+
+#card{
+
+    height: 50%;
+    width: 100%;
+ }
+
+
+ #profile{
+	position: absolute;
+	height: 400px;
+	width: 100%
+ }
+
+ #profil{
+	
+	left: 5%;
+	padding-top: 100px;
+	padding-bottom: 50px;
+ }
 
 
 .footer-20192 {

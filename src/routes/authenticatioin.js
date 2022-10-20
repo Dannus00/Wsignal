@@ -5,13 +5,12 @@ const helpers = require('../lib/helpers');
 const {isLoggedIn} = require('../lib/out');
 const {isNotLoggedIn} = require('../lib/out');
 const pool = require('../database');
-const { readFile } = require('fs');
-const spawn = require('child_process').spawn
-const FileReader = require('filereader')
-const fs = require('fs')
 let ecg 
 let ppg
 let resp
+let spo2
+let puls
+let rp
 //*********Signin***********+//
 router.get('/signin',isNotLoggedIn, (req,res)=>{
 
@@ -64,6 +63,21 @@ router.post('/registro2', async (req,res)=>{
 
 })
 
+
+router.post('/registro3', async (req,res)=>{
+
+              
+    spo2 = JSON.stringify(req.body[0])
+    puls = JSON.stringify(req.body[1])
+    rp = JSON.stringify(req.body[2])
+   
+  
+   /*fs.writeFileSync('src/JSON/data.json',JSON.stringify({data},null,2))*/
+   res.sendStatus(200)
+
+
+})
+
 router.post('/registro', isLoggedIn, async (req,res)=>{
 
   const {name, lastname,ident,gender,age,bt,date,oc,ec,phone,address,pr } = req.body;
@@ -84,7 +98,10 @@ router.post('/registro', isLoggedIn, async (req,res)=>{
        pr,
        ecg,
        ppg,
-       resp
+       resp,
+       spo2,
+       puls,
+       rp
   }; 
 
   await pool.query('INSERT INTO pacientes set ?', [newLink]);
@@ -92,7 +109,7 @@ router.post('/registro', isLoggedIn, async (req,res)=>{
   res.redirect('/profile');
 })
 
-router.get('/ultrasecretsadmins', (req,res)=>{
+router.get('/admin/ultrasecretsadmins', (req,res)=>{
 
     res.render('auth/secretadmins')
 
@@ -100,23 +117,23 @@ router.get('/ultrasecretsadmins', (req,res)=>{
 
 router.post('/admins', passport.authenticate('local.admins',{
 
-    successRedirect: '/adminregistsecret',
-    failureRedirect: '/ultrasecretsadmins',
+    successRedirect: '/admin/adminregistsecret',
+    failureRedirect: '/admin/ultrasecretsadmins',
     failureFlash:true
 
 
 }));
 
 
-router.get('/adminregistsecret',(req,res)=>{
+router.get('/admin/adminregistsecret', isLoggedIn,(req,res)=>{
 
     res.render('auth/adminregist')
 });
 
 router.post('/adminregistsecret', passport.authenticate('local.adminR',{
 
-    successRedirect: '/',
-    failureRedirect: '/adminregistsecret',
+    successRedirect: '/logout',
+    failureRedirect: '/admin/adminregistsecret',
     failureFlash:true
 
 
