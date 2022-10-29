@@ -2,10 +2,11 @@ const express = require('express');
 const router = express.Router();
 const {isLoggedIn} = require('../lib/out');
 const pool = require('../database');
+const {roladmin,roldoc,roluser} = require('../lib/roles')
 
 
 
-router.get('/list',isLoggedIn, async(req,res)=>{
+router.get('/list',isLoggedIn, roldoc(["doctor"]) ,async(req,res)=>{
 
 
     const links = await pool.query('SELECT id,name,lastname,ident,created_at FROM database_medical.pacientes');
@@ -15,7 +16,7 @@ router.get('/list',isLoggedIn, async(req,res)=>{
 
 });
 
-router.get('/edit/:id',isLoggedIn, async (req,res) =>{
+router.get('/edit/:id',isLoggedIn, roldoc(["doctor"]) ,async (req,res) =>{
     const { id } = req.params;
     const links = await pool.query('SELECT * FROM database_medical.pacientes WHERE id =?', [id]);
    
@@ -23,7 +24,7 @@ router.get('/edit/:id',isLoggedIn, async (req,res) =>{
 
 });
 
-router.get('/delete/:id', isLoggedIn, async (req,res)=>{
+router.get('/delete/:id', isLoggedIn, roldoc(["doctor"]) ,async (req,res)=>{
 
     
     //console.log(req.params.id);
@@ -59,7 +60,7 @@ router.post('/edit/:id', isLoggedIn, async (req,res)=>{
     res.redirect('/profile');
 })
 
-router.get('/view/:id',isLoggedIn, async (req,res) =>{
+router.get('/view/:id',isLoggedIn, roldoc(["doctor"]) ,async (req,res) =>{
     const { id } = req.params;
     const data = await pool.query('SELECT ecg,ppg,resp,spo2,puls,rp FROM database_medical.pacientes WHERE id =?', [id]);
     

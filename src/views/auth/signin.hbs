@@ -1,23 +1,10 @@
-{{!-- <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #cce2f1;">
-        <div class="container">
-            <a class="navbar-brand" href="/">🩺 MedicalSignal 🩺</a>
-            <ul class="navbar-nav ml-auto">
-
-                <li class="nav-item">
-                    <a href="/signin" class="nav-link">Inicio</a>
-                </li>
+<body class="sigmain">
+<div class="d-flex justify-content-center align-items-center mt-5" >
 
 
-            </ul>
-        </div>
-    </nav> --}}
+    <div class="container shadow-lg "  id="cardi" style="background-color: rgba(255, 255, 255, 0.603) ;" >
 
-
-
-<div class="d-flex justify-content-center align-items-center mt-5">
-
-
-    <div class="card" id="cardi">
+       <div class="row p-2">
 
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
             <li class="nav-item text-center">
@@ -30,13 +17,16 @@
             </li>
 
         </ul>
-        <div class="tab-content" id="pills-tabContent">
-            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+        </div>
 
-                <div class="container " id="conta1">
-                    <div class="row">
+        <div class="row" >
+        <div class="tab-content" id="pills-tabContent" style="background-color: rgba(255, 255, 255, 0) ;">
+            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" >
+
+                <div class="container " id="conta1" >
+                    <div class="row" >
                         <div class="col mx-auto">
-                            <div class="card text-center">
+                            <div class="card text-center" style="background-color: rgba(255, 255, 255, 0) ;">
                                 <div class="card-header">
                                     <h3>Iniciar Sesion</h3>
                                 </div>
@@ -46,7 +36,7 @@
                                     <form action="/signin" method="post">
 
                                         <div class="form-group">
-                                            <input type="text" name="username" placeholder="Usuario"
+                                            <input type="text" name="usern" placeholder="Usuario"
                                                 class="form-control">
                                         </div>
                                         <div class="form-group">
@@ -71,7 +61,7 @@
             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
 
 
-                <div class="container" id="conta1">
+                <div class="container" id="conta2">
                     <div class="row">
                         <div class="col mx-auto">
                             <div class="card text-center">
@@ -109,10 +99,12 @@
 
         </div>
 
-
+    </div>
 
 
     </div>
 
 
 </div>
+
+</body> 

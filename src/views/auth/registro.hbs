@@ -1,315 +1,313 @@
-<nav class="navbar navbar-expand-lg navbar-light " style="background-color: #cce2f1;">
-  <div class="container">
-    <a class="navbar-brand" href="/">🩺 MedicalSignal 🩺</a>
-    <ul class="navbar-nav ml-auto">
-
-      <li class="nav-item">
-        <a href="/profile" class=" nav-link">Perfil</a>
-      </li>
-      <li class="nav-item">
-        <a href="/logout" class="nav-link">Cerrar sesión</a>
-      </li>
-
-    </ul>
-  </div>
-</nav>
+<body id="registro">
 
 
-<div class="container p-4">
-  <form action="/registro" method="post">
-    <div class="form-row p-2">
-      <div class="col">
-        <label for="name">Nombre</label>
-        <input type="text" class="form-control" placeholder="Nombre" id="name" name="name">
-      </div>
-      <div class="col">
-        <label for="apellidos">Apellidos</label>
-        <input type="text" class="form-control" placeholder="Apellidos" id="apellidos" name="lastname">
-      </div>
-    </div>
 
-    <div class="form-row p-2">
-      <div class="col">
-        <label for="name">Identificación</label>
-        <input type="text" class="form-control" placeholder="Identificación" id="name" name="ident">
-      </div>
-      <div class="col">
-        <label for="Genero">Sexo</label>
-        <select class="form-control" id="Genero" name="gender">
-          <option>-----</option>
-          <option>Masculino</option>
-          <option>Femenino</option>
-        </select>
-      </div>
-    </div>
 
-    <div class="form-row p-2">
-      <div class="col">
-        <label for="name">Edad</label>
-        <input type="number" class="form-control" placeholder="Edad" id="age" name="age" min="1" max="100">
-      </div>
-      <div class="col">
-        <label for="Genero">Tipo de sangre</label>
-        <select class="form-control" id="bt" name="bt">
-          <option>-----</option>
-          <option>A+</option>
-          <option>B+</option>
-          <option>O+</option>
-          <option>AB+</option>
-          <option>A-</option>
-          <option>B-</option>
-          <option>O-</option>
-          <option>AB-</option>
-        </select>
+
+  <div class="container p-4 shadow-lg" style="background-color: rgba(255, 255, 255, 0.603) ;">
+    <form action="/registro" method="post">
+      <div class="form-row p-2">
+        <div class="col">
+          <label for="name"><i class="far fa-user"></i> Nombre</label>
+          <input type="text" class="form-control shadow-lg border border-dark" placeholder="Nombre" id="name"
+            name="name">
+        </div>
+        <div class="col">
+          <label for="apellidos"><i class="fas fa-user"></i> Apellidos</label>
+          <input type="text" class="form-control shadow-lg border border-dark" placeholder="Apellidos" id="apellidos"
+            name="lastname">
+        </div>
       </div>
 
-      <div class="col">
-        <label for="name">Fecha de nacimiento</label>
-        <input type="date" class="form-control" placeholder="Fecha de nacimiento" id="date" name="date">
-      </div>
-    </div>
-
-
-    <div class="form-row p-2">
-      <div class="col">
-        <label for="name">Ocupación</label>
-        <input type="text" class="form-control" placeholder="Ocupación" id="oc" name="oc">
-      </div>
-      <div class="col">
-        <label for="Genero">Estado Civil</label>
-        <select class="form-control" id="ec" name="ec">
-          <option>-----</option>
-          <option>Soltero</option>
-          <option>Casado</option>
-          <option>Viudo</option>
-          <option>Divorsiado</option>
-          <option>Union libre</option>
-        </select>
-      </div>
-      <div class="col">
-        <label for="name">Celular</label>
-        <input type="tel" class="form-control" placeholder="Celular" id="tel" name="phone">
-      </div>
-    </div>
-
-
-
-
-
-
-    <div class="form-row p-2">
-      <div class="col">
-        <label for="name">Direccion</label>
-        <input type="text" class="form-control" placeholder="Dirección" id="add" name="address">
-      </div>
-      <div class="col">
-        <label for="apellidos">Barrio</label>
-        <input type="text" class="form-control" placeholder="Barrio" id="pr" name="pr">
-      </div>
-    </div>
-
-
-    <div class="form-group p-2">
-
-    <div class="row">
-      <div class="col">
-      <label for="exampleFormControlFile1">Señales Fisiologicas (ECG, PPG,RESP)</label>
-      <input type="file" class="form-control-file" id="file1">
+      <div class="form-row p-2">
+        <div class="col">
+          <label for="name"><i class="fa-regular fa-id-card"></i> Identificación</label>
+          <input type="text" class="form-control shadow-lg border border-dark" placeholder="Identificación" id="name"
+            name="ident">
+        </div>
+        <div class="col">
+          <label for="Genero"><i class="fa-sharp fa-solid fa-venus-mars"></i> Sexo</label>
+          <select class="form-control shadow-lg border border-dark" id="Genero" name="gender">
+            <option>-----</option>
+            <option>Masculino</option>
+            <option>Femenino</option>
+          </select>
+        </div>
       </div>
 
-      <div class="col">
-      <label for="file2">Parametros Fisiologicos (Spo2,heart rate,respiratory rate)</label>
-      <input type="file" class="form-control-file" id="file2">
+      <div class="form-row p-2">
+        <div class="col">
+          <label for="name"><i class="fa-solid fa-id-badge"></i> Edad</label>
+          <input type="number" class="form-control shadow-lg border border-dark" placeholder="Edad" id="age" name="age"
+            min="1" max="100">
+        </div>
+        <div class="col">
+          <label for="Genero"><i class="fa-solid fa-syringe"></i> Tipo de sangre</label>
+          <select class="form-control shadow-lg border border-dark" id="bt" name="bt">
+            <option>-----</option>
+            <option>A+</option>
+            <option>B+</option>
+            <option>O+</option>
+            <option>AB+</option>
+            <option>A-</option>
+            <option>B-</option>
+            <option>O-</option>
+            <option>AB-</option>
+          </select>
+        </div>
+
+        <div class="col">
+          <label for="name"><i class="fa-solid fa-calendar-days"></i> Fecha de nacimiento</label>
+          <input type="date" class="form-control shadow-lg border border-dark" placeholder="Fecha de nacimiento"
+            id="date" name="date">
+        </div>
       </div>
-  </div>
-    </div>
-
-    <script>
-
-      function read(e) {
-        const archivo = e.target.files[0];
 
 
-        function csvToArray(str, delimiter = ",") {
+      <div class="form-row p-2">
+        <div class="col">
+          <label for="name"><i class="fa-solid fa-briefcase"></i> Ocupación</label>
+          <input type="text" class="form-control shadow-lg border border-dark" placeholder="Ocupación" id="oc"
+            name="oc">
+        </div>
+        <div class="col">
+          <label for="Genero"><i class="fa-solid fa-ring"></i> Estado Civil</label>
+          <select class="form-control shadow-lg border border-dark" id="ec" name="ec">
+            <option>-----</option>
+            <option>Soltero</option>
+            <option>Casado</option>
+            <option>Viudo</option>
+            <option>Divorsiado</option>
+            <option>Union libre</option>
+          </select>
+        </div>
+        <div class="col">
+          <label for="name"><i class="fa-solid fa-mobile"></i> Celular</label>
+          <input type="tel" class="form-control shadow-lg border border-dark" placeholder="Celular" id="tel"
+            name="phone">
+        </div>
+      </div>
 
 
-          const headers = str.slice(0, str.indexOf("\n", "\r")).split(delimiter);
-
-
-          const rows = str.slice(str.indexOf("\n") + 1).split("\n");
 
 
 
 
+      <div class="form-row p-2">
+        <div class="col">
+          <label for="name"><i class="fa-solid fa-earth-americas"></i> Direccion</label>
+          <input type="text" class="form-control shadow-lg border border-dark" placeholder="Dirección" id="add"
+            name="address">
+        </div>
+        <div class="col">
+          <label for="apellidos"><i class="fa-solid fa-city"></i> Barrio</label>
+          <input type="text" class="form-control shadow-lg border border-dark" placeholder="Barrio" id="pr" name="pr">
+        </div>
+      </div>
 
-          const arr = rows.map(function (row) {
-            const values = row.split(delimiter);
-            const el = headers.reduce(function (object, header, index) {
-              object[header] = values[index];
-              return object;
-            }, {});
-            return el;
-          });
+
+      <div class="form-group p-2">
+
+        <div class="row">
+          <div class="col">
+            <label for="exampleFormControlFile1"> Señales Fisiologicas (ECG, PPG,RESP)</label>
+            <input type="file" class="form-control-file shadow-lg border border-hidden" id="file1">
+          </div>
+
+          <div class="col">
+            <label for="file2"> Parametros Fisiologicos (Spo2,heart rate,respiratory rate)</label>
+            <input type="file" class="form-control-file shadow-lg border border-hidden" id="file2">
+          </div>
+        </div>
+      </div>
+
+      <script>
+
+        function read(e) {
+          const archivo = e.target.files[0];
 
 
-          return arr;
+          function csvToArray(str, delimiter = ",") {
+
+
+            const headers = str.slice(0, str.indexOf("\n", "\r")).split(delimiter);
+
+
+            const rows = str.slice(str.indexOf("\n") + 1).split("\n");
+
+
+
+
+
+            const arr = rows.map(function (row) {
+              const values = row.split(delimiter);
+              const el = headers.reduce(function (object, header, index) {
+                object[header] = values[index];
+                return object;
+              }, {});
+              return el;
+            });
+
+
+            return arr;
+          }
+
+          const reader = new FileReader();
+          reader.onload = function (e) {
+
+            const data = e.target.result;
+            const d = data.replace(/[\r]/g, '');
+            const dat = csvToArray(d)
+
+
+
+            let ppgdata = dat.map(arr => {
+              let time = Number(arr['Time [s]'])
+              let re = Number(arr[' PLETH'])
+
+              return { x: time, y: re }
+            });
+
+            let ecgdata = dat.map(arr => {
+              let time = Number(arr['Time [s]'])
+              let re = Number(arr[" II"])
+
+              return { x: time, y: re }
+            });
+
+            let respdata = dat.map(arr => {
+              let time = Number(arr['Time [s]'])
+              let re = Number(arr[" RESP"])
+
+              return { x: time, y: re }
+            });
+
+            console.log(ecgdata)
+            console.log(ppgdata)
+            console.log(respdata)
+
+            let vector = [ecgdata, ppgdata, respdata]
+            console.log(vector)
+
+
+
+            fetch('/registro2', {
+
+              // HTTP request type
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              // Sending our blob with our request
+              body: JSON.stringify(vector)
+            })
+              .then(response => console.log("Upload"))
+              .catch(err => console.error(err));
+
+
+
+          };
+
+          reader.readAsText(archivo)
+
         }
-
-        const reader = new FileReader();
-        reader.onload = function (e) {
-
-          const data = e.target.result;
-          const d = data.replace(/[\r]/g, '');
-          const dat = csvToArray(d)
-
-
-
-          let ppgdata = dat.map(arr => {
-            let time = Number(arr['Time [s]'])
-            let re = Number(arr[' PLETH'])
-
-            return { x: time, y: re }
-          });
-
-          let ecgdata = dat.map(arr => {
-            let time = Number(arr['Time [s]'])
-            let re = Number(arr[" II"])
-
-            return { x: time, y: re }
-          });
-
-          let respdata = dat.map(arr => {
-            let time = Number(arr['Time [s]'])
-            let re = Number(arr[" RESP"])
-
-            return { x: time, y: re }
-          });
-
-          console.log(ecgdata)
-          console.log(ppgdata)
-          console.log(respdata)
-
-          let vector = [ecgdata, ppgdata, respdata]
-          console.log(vector)
-
-
-
-          fetch('/registro2', {
-
-            // HTTP request type
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            // Sending our blob with our request
-            body: JSON.stringify(vector)
-          })
-            .then(response => console.log("Upload"))
-            .catch(err => console.error(err));
-
-
-
-        };
-
-        reader.readAsText(archivo)
-
-      }
 
 
         function read2(e) {
-        const archivo = e.target.files[0];
+          const archivo = e.target.files[0];
 
 
-        function csvToArray(str, delimiter = ",") {
+          function csvToArray(str, delimiter = ",") {
 
 
-          const headers = str.slice(0, str.indexOf("\n", "\r")).split(delimiter);
+            const headers = str.slice(0, str.indexOf("\n", "\r")).split(delimiter);
 
 
-          const rows = str.slice(str.indexOf("\n") + 1).split("\n");
-
-
-
-
-
-          const arr = rows.map(function (row) {
-            const values = row.split(delimiter);
-            const el = headers.reduce(function (object, header, index) {
-              object[header] = values[index];
-              return object;
-            }, {});
-            return el;
-          });
-
-
-          return arr;
-        }
-
-        const reader = new FileReader();
-        reader.onload = function (e) {
-
-          const data = e.target.result;
-          const d = data.replace(/[\r]/g, '');
-          const dat = csvToArray(d)
+            const rows = str.slice(str.indexOf("\n") + 1).split("\n");
 
 
 
-                     
+
+
+            const arr = rows.map(function (row) {
+              const values = row.split(delimiter);
+              const el = headers.reduce(function (object, header, index) {
+                object[header] = values[index];
+                return object;
+              }, {});
+              return el;
+            });
+
+
+            return arr;
+          }
+
+          const reader = new FileReader();
+          reader.onload = function (e) {
+
+            const data = e.target.result;
+            const d = data.replace(/[\r]/g, '');
+            const dat = csvToArray(d)
+
+
+
+
             let sp02 = dat.map(arr => {
 
-               let re = Number(arr[' SpO2'])
+              let re = Number(arr[' SpO2'])
 
-               return re
+              return re
             });
             let puls = dat.map(arr => {
 
-               let re = Number(arr[' PULSE'])
+              let re = Number(arr[' PULSE'])
 
-               return re
+              return re
             });
             let rp = dat.map(arr => {
 
-               let re = Number(arr[' RESP'])
+              let re = Number(arr[' RESP'])
 
-               return re
+              return re
             });
 
-             let vector = [sp02,puls, rp]
-    
-
-
-
-          fetch('/registro3', {
-
-            // HTTP request type
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            // Sending our blob with our request
-            body: JSON.stringify(vector)
-          })
-            .then(response => console.log("Upload"))
-            .catch(err => console.error(err));
-
-
-
-        };
-
-        reader.readAsText(archivo)
-
-      }
-
-
-      document.getElementById("file1").addEventListener('change', read);
-      document.getElementById("file2").addEventListener('change', read2);
-    </script>
+            let vector = [sp02, puls, rp]
 
 
 
 
-    <div class="form-group p-2">
-      <button class="btn btn-success btn-block">
-        Enviar
-      </button>
-    </div>
+            fetch('/registro3', {
 
-  </form>
+              // HTTP request type
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              // Sending our blob with our request
+              body: JSON.stringify(vector)
+            })
+              .then(response => console.log("Upload"))
+              .catch(err => console.error(err));
 
-</div>
+
+
+          };
+
+          reader.readAsText(archivo)
+
+        }
+
+
+        document.getElementById("file1").addEventListener('change', read);
+        document.getElementById("file2").addEventListener('change', read2);
+      </script>
+
+
+
+
+      <div class="form-group p-2">
+        <button class="btn btn-primary btn-block shadow-lg border border-dark">
+          Enviar
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+</body>

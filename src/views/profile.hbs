@@ -1,70 +1,82 @@
 <body id="bod">
-  
 
-<nav class="navbar navbar-expand-lg navbar-light " style="background-color: #cce2f1;">
- <div class="container">
-    <a class="navbar-brand" href="/">🩺 MedicalSignal 🩺</a>
-   <ul class="navbar-nav ml-auto">
- 
+{{!--   <nav class="navbar navbar-expand-lg navbar-light shadow-lg" style="background-color: #0c0846;">
+    <div class="container ">
+      <a class="navbar-brand " style="color:rgb(236, 236, 236);" href="/">🩺 MedicalSignal 🩺</a>
+      <ul class="navbar-nav ml-auto">
+
         <li class="nav-item">
-          <a href="/profile"  class=" nav-link font-weight-bold">Perfil</a>
+          <a href="/signin" class="nav-link font-weight-bold  shadow-lg  refer" style="color: white;"><i class="fa-solid fa-house-user"></i> Inicio</a>
         </li>
         <li class="nav-item">
-          <a href="/logout" class="nav-link font-weight-bold">Cerrar sesión</a>
+          <a href="/profile" class="nav-link font-weight-bold  shadow-lg  refer" style="color: rgb(247, 240, 240);"><i class="fa-solid fa-user-doctor"></i> Perfil</a>
         </li>
-
-   </ul>
- </div>
-</nav>
-
-
-<container>
-    <div class="row"  id="profil">
-        <div class="col-md-4 ml-5">
-            
-                    <h3 class="font-weight-bold"> Bienvenido Dr. {{user.username}} </h3>
-                    <p class="lead mb-o" style="font-size: 18px;">
-                      Realiza fácilmente la historia clinica de tu pacientes.
-                      <br>
-                      Visualiza las señales fisiologicas y sus parametros
-                    </p>
+      
+      </ul>
+      <ul class="navbar-nav" >
+      <div class="dropdown show" style="padding-left: 5%;">
+        <a class=" mr-4" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+          style="color: black;">
+          <img src="/img/equipo-medico.png" alt="logo" class="mx-auto m-2 rounded-circle"
+            style="width:35px ; border: solid rgb(103, 192, 214);">
+        </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="/Settings"><i class="fa-solid fa-gear"></i> Configuracion</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/logout"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesion</a>
         </div>
+      </div>
+      </ul>
     </div>
-</container>
+  </nav> --}}
 
-<div class="row p-2"  id="profile" >
-  {{!-- <div class="row p-2" style="background-color:#cce2f1" id="profile" ></div> --}}
-   <h3 class="mb-md-3 col-12 col-md-12 text-center font-weight-bold" style="color: #0033a0;">Servicios Disponibles</h3>
-    <div class="col-sm-4 mx-auto text-center profile ">
+  <container>
+    <div class="row" id="profil">
+      <div class="col-md-4 ml-5">
+
+        <h3 class="font-weight-bold"> Bienvenido Dr. {{user.username}} </h3>
+        <p class="lead mb-o" style="font-size: 18px;">
+          Realiza fácilmente la historia clinica de tu pacientes.
+          <br>
+          Visualiza las señales fisiologicas y sus parametros
+        </p>
+      </div>
+    </div>
+  </container>
+
+  <div class="row p-2" id="profile">
+    {{!-- <div class="row p-2" style="background-color:#cce2f1" id="profile"></div> --}}
+    <h3 class="mb-md-3 col-12 col-md-12 text-center font-weight-bold" style="color: #0033a0;">Servicios Disponibles</h3>
+    <div class="col-sm-4 mx-auto text-center profile">
       <div class="card shadow-lg">
-        <a href="/registro" class="card-link">
-        <div class="card-body">
-           <div class="card-title">
-                
-                <img src="/img/medical-report-2374867-1988327.png" alt="logo" class="mx-auto m-2">
-           </div>
-              <h6 class="font-weight-bold" style="color:black;">Registre sus Nuevos paciente y su historial clinico</h6>
-              
-        </div>
+        <a href="/registro" class="card-link cart">
+          <div class="card-body ">
+            <div class="card-title">
+
+              <img src="/img/medical-report-2374867-1988327.png" alt="logo" class="mx-auto m-2">
+            </div>
+            <h6 class="font-weight-bold h">Registre sus Nuevos paciente y su historial clinico</h6>
+
+          </div>
         </a>
       </div>
     </div>
 
-      <div class="col-sm-4 mx-auto text-center profile">
+    <div class="col-sm-4 mx-auto text-center profile">
       <div class="card shadow-lg">
-        <a href="/list" class="card-link">
-        <div class="card-body">
-           <div class="card-title">
-                
-                <img src="/img/ecg-monitor-2374869-1988329.png" alt="logo" class="mx-auto m-2">
-           </div>
-              <h6 class="font-weight-bold" style="color:black;">Seguimiento de los Paciente Actuales</h6>
-              
-        </div>
+        <a href="/list" class="card-link cart">
+          <div class="card-body">
+            <div class="card-title">
+
+              <img src="/img/ecg-monitor-2374869-1988329.png" alt="logo" class="mx-auto m-2">
+            </div>
+            <h6 class="font-weight-bold">Seguimiento de los Paciente Actuales</h6>
+
+          </div>
         </a>
       </div>
     </div>
 
-</div>
+  </div>
 
 </body>

@@ -1,5 +1,4 @@
 const passport = require('passport');
-const passportadmin = require('passport');
 const LocalStrategy = require('passport-local');
 const pool = require('../database');
 const helpers = require('../lib/helpers');
@@ -8,14 +7,14 @@ const emailer = require('../lib/emailer');
 
 
 passport.use('local.signin', new LocalStrategy({
-    usernameField: 'username',
+    usernameField: 'usern',
     passwordField: 'password',
     passReqToCallback: true
  
- }, async(req,username,password,done)=>{
+ }, async(req,usern,password,done)=>{
  
   
-    const rows = await pool.query('SELECT * FROM doctors WHERE username =?', [username])
+    const rows = await pool.query('SELECT * FROM doctors WHERE usern =?', [usern])
      
      if (rows.length > 0){
  
@@ -40,41 +39,24 @@ passport.use('local.signin', new LocalStrategy({
  }));
 
 
-
- passport.serializeUser((user,done)=>{
-
-   done(null, user.id);
- 
- });
-  
- 
- passport.deserializeUser(async(id,done)=>{
- 
-    const rows  = await pool.query('SELECT * FROM doctors WHERE id = ?', [id]);
-    done(null, rows[0]);
- })
-
-
-
-
- passportadmin.use('local.admins', new LocalStrategy({
-   usernameField: 'username',
-   passwordField: 'password',
+ passport.use('local.admins', new LocalStrategy({
+   usernameField: 'usernameadmin',
+   passwordField: 'passwordadmin',
    passReqToCallback: true
 
-}, async(req,username,password,done)=>{
+}, async(req,usernameadmin,passwordadmin,done)=>{
 
  
-   const rows = await pool.query('SELECT * FROM Admins WHERE Name =?', [username])
+   const rows1 = await pool.query('SELECT * FROM Admins WHERE Name =?', [usernameadmin])
     
-    if (rows.length > 0){
+    if (rows1.length > 0){
 
-      const user = rows[0];
+      const user = rows1[0];
       
-      const validpassword = await pool.query('SELECT * FROM Admins WHERE Password =?', [password])
-      
-      
-      if(validpassword.length>0){
+      const validpassword = await pool.query('SELECT * FROM Admins WHERE Password =?', [passwordadmin])
+      const valid = validpassword[0]
+     
+      if(valid.Password == passwordadmin){
 
          done(null, user, req.flash('Success','Welcome' + user.username));
       }else{
@@ -90,7 +72,7 @@ passport.use('local.signin', new LocalStrategy({
 }));
 
 
-passportadmin.use('local.adminR', new LocalStrategy({
+passport.use('local.adminR', new LocalStrategy({
 
    usernameField: 'username',
    passwordField: 'password',
@@ -99,25 +81,39 @@ passportadmin.use('local.adminR', new LocalStrategy({
 
   
    const {email} = req.body;
+   const {lastname} = req.body;
+   const {ident} = req.body;
+   const {usern} = req.body;
+   const role  = "doctor"
+
 
    const rows = await pool.query('SELECT * FROM doctors WHERE email =?', [email])
+   const rows2 = await pool.query('SELECT * FROM doctors WHERE email =?', [ident])
 
-      if (rows.length > 0){
+      if (rows2.length > 0){
 
-         done(null,false, req.flash('message','El correo electronico ya se encuentra registrado'));
+         
+         done(null,false, req.flash('message','Este usuario ya se encuentra registrado'));
       
+    }else if (rows.length > 0){
+
+      done(null,false, req.flash('message','El correo electronico ya se encuentra registrado'));
+
     }else{
-
-
 
       const newUser = {
          username,
+         lastname,
+         ident,
+         email,
+         usern,
          password,
-         email
+         role
       };
     
       const newuser = {
        username,
+       usern,
        password,
        email
     };
@@ -137,15 +133,19 @@ passportadmin.use('local.adminR', new LocalStrategy({
 }));
 
 
-passportadmin.serializeUser((admin,done)=>{
 
-    done(null, admin.id); 
+
+
+
+ passport.serializeUser((user,done)=>{
+
+   done(null, user);
  
  });
   
  
- passportadmin.deserializeUser(async(id,done)=>{
+ passport.deserializeUser(async(id,done)=>{
  
-    const rows  = await pool.query('SELECT * FROM Admins WHERE id = ?', [id]);
-    done(null, rows[0]); 
+   /*  const rows  = await pool.query('SELECT * FROM doctors WHERE id = ?', [id]); */
+    done(null, id);
  })

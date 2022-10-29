@@ -12,6 +12,7 @@ const {database} = require('./keys')
 const app = express();
 require('./lib/passport');
 
+
 //settings//
 app.use(express.json({limit: '10000kB'}));
 app.use(express.urlencoded({limit: '10000kB'}));
@@ -43,12 +44,15 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
+
 // Global Variables //
 app.use((req,res, next)=>{
 
     app.locals.Success = req.flash('Success')
     app.locals.message = req.flash('message')
     app.locals.user =req.user;
+    
+
      next();
  })
 
@@ -57,6 +61,7 @@ app.use((req,res, next)=>{
 app.use(require('./routes/index'));
 app.use(require('./routes/authenticatioin'));
 app.use(require('./routes/links'));
+
 
 
 

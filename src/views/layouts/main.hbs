@@ -12,6 +12,11 @@
 
     <script src="https://kit.fontawesome.com/fd5cc1cb26.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/signin.css">
+    <link rel="stylesheet" href="/css/profile.css">
+    <link rel="stylesheet" href="/css/view.css">
+     <link rel="stylesheet" href="/css/load.css">
+
 
 
 
@@ -19,10 +24,44 @@
 
 <body>
 
-    {{!-- <div id="loader"></div> --}}
+    {{!-- <div class="lds-roller" id="loader"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div> --}}
 
-    
-    {{!-- {{>navigation}} --}}
+<div class="wrapper" id="loader">
+    <div class="blockcont">
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+    </div>
+</div>
+
+    {{>navigation}} 
     {{> message}}
 
 
@@ -45,4 +84,17 @@
 
 </body>
 
+<script>
+
+
+    var loader = document.getElementById("loader");
+
+    window.addEventListener("load", function(){
+              loader.style.display = "none"
+    });
+
+    window.onunload = function () {
+    //logout code here...
+}
+</script>
 </html>

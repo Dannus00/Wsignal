@@ -14,6 +14,7 @@
     "@arction/xydata": "^1.4.0",
     "@sendgrid/mail": "^7.7.0",
     "bcryptjs": "^2.4.3",
+    "bootstrap-icons": "^1.9.1",
     "child_process": "^1.0.2",
     "connect-flash": "^0.1.1",
     "crypto": "^1.0.1",

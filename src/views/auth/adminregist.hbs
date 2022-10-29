@@ -2,24 +2,36 @@
   <form action="/adminregistsecret" method="post">
     <div class="form-row p-2">
       <div class="col">
-        <label for="name">Usuario</label>
-        <input type="text" class="form-control" placeholder="Usuario" id="name" name="username">
+        <label for="name"><i class="far fa-user"></i> Nombre</label>
+        <input type="text" class="form-control shadow-lg border border-dark" placeholder="Usuario" id="name" name="username">
       </div>
       <div class="col">
-        <label for="name">Contraseña</label>
-        <input type="text" class="form-control" placeholder="Contraseña" id="name" name="password">
+        <label for="apellidos"><i class="fas fa-user"></i> Apellidos</label>
+        <input type="text" class="form-control shadow-lg border border-dark" placeholder="Apellidos" id="apellidos"
+          name="lastname">
       </div>
     </div>
-
     <div class="form-row p-2">
       <div class="col">
-        <label for="name">Direccion de Correo</label>
-        <input type="email" class="form-control" placeholder="email" id="name" name="email">
+        <label for="name"><i class="fa-regular fa-id-card"></i> Identificación</label>
+        <input type="text" class="form-control shadow-lg border border-dark" placeholder="Identificación" id="name"
+          name="ident">
       </div>
-    
+      <div class="col">
+        <label for="name"><i class="fa-solid fa-envelope"></i> Direccion de Correo</label>
+        <input type="email" class="form-control shadow-lg border border-dark" placeholder="email" id="name" name="email">
+      </div>
     </div>
-
-
+    <div class="form-row p-2">
+       <div class="col">
+        <label for="name"><i class="fa-solid fa-user-tie"></i> Usuario</label>
+        <input type="text" class="form-control shadow-lg border border-dark" placeholder="Usuario" id="name" name="usern">
+      </div>
+      <div class="col">
+        <label for="name"><i class="fa-solid fa-lock"></i> Contraseña</label>
+        <input type="text" class="form-control shadow-lg border border-dark" placeholder="Contraseña" id="name" name="password">
+      </div>
+    </div>
 
     <div class="form-group p-2">
       <button class="btn btn-success btn-block">

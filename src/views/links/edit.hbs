@@ -1,134 +1,121 @@
-<nav class="navbar navbar-expand-lg navbar-light " style="background-color: #cce2f1;">
- <div class="container">
-    <a class="navbar-brand" href="/">🩺 MedicalSignal 🩺</a>
-   <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a href="/profile"  class=" nav-link">Perfil</a>
-        </li>
-         <li class="nav-item">
-          <a href="/list"  class=" nav-link">Pacientes</a>
-        </li>
-        <li class="nav-item">
-          <a href="/logout" class="nav-link">Cerrar sesión</a>
-        </li>
-   </ul>
- </div>
-</nav>
+<body id="registro">
 
 
-
-
-
-
-
-<div class="container p-4">
-  <form action="/edit/{{links.id}}" method="post">
-    <div class="form-row p-2">
-      <div class="col">
-        <label for="name">Nombre</label>
-        <input type="text" class="form-control" placeholder="Nombre" id="name" name="name" value="{{links.name}}">
-      </div>
-      <div class="col">
-        <label for="apellidos">Apellidos</label>
-        <input type="text" class="form-control" placeholder="Apellidos" id="apellidos" name="lastname" value="{{links.lastname}}">
-      </div>
-    </div>
-
-    <div class="form-row p-2">
-      <div class="col">
-        <label for="name">Indentificación</label>
-        <input type="text" class="form-control" placeholder="Identificación" id="name" name="ident" value="{{links.ident}}">
-      </div>
-      <div class="col">
-        <label for="Genero">Sexo</label>
-        <select class="form-control" id="Genero" name="gender">
-          <option>{{links.gender}}</option>
-          <option>Masculino</option>
-          <option>Femenino</option>
-        </select>
-      </div>
-    </div>
-
-    <div class="form-row p-2">
-      <div class="col">
-        <label for="name">Edad</label>
-        <input type="number" class="form-control" placeholder="Edad" id="age" name="age" min="1" max="100" value="{{links.age}}">
-      </div>
-      <div class="col">
-        <label for="Genero">Tipo de sangre</label>
-        <select class="form-control" id="bt" name="bt">
-          <option>{{links.bt}}</option>
-          <option>A+</option>
-          <option>B+</option>
-          <option>O+</option>
-          <option>AB+</option>
-          <option>A-</option>
-          <option>B-</option>
-          <option>O-</option>
-          <option>AB-</option>
-        </select>
+  <div class="container p-4 shadow-lg " style="background-color: rgba(255, 255, 255, 0.603) ;">
+    <form action="/edit/{{links.id}}" method="post">
+      <div class="form-row p-2">
+        <div class="col">
+          <label for="name"><i class="far fa-user"></i> Nombre</label>
+          <input type="text" class="form-control" placeholder="Nombre" id="name" name="name" value="{{links.name}}">
+        </div>
+        <div class="col">
+          <label for="apellidos"><i class="fas fa-user"></i> Apellidos</label>
+          <input type="text" class="form-control" placeholder="Apellidos" id="apellidos" name="lastname"
+            value="{{links.lastname}}">
+        </div>
       </div>
 
-      <div class="col">
-        <label for="name">Fecha de nacimiento</label>
-        <input type="date" class="form-control" placeholder="Fecha de nacimiento" id="date" name="date">
-        
+      <div class="form-row p-2">
+        <div class="col">
+          <label for="name"><i class="fa-regular fa-id-card"></i> Indentificación</label>
+          <input type="text" class="form-control" placeholder="Identificación" id="name" name="ident"
+            value="{{links.ident}}">
+        </div>
+        <div class="col">
+          <label for="Genero"><i class="fa-sharp fa-solid fa-venus-mars"></i> Sexo</label>
+          <select class="form-control" id="Genero" name="gender">
+            <option>{{links.gender}}</option>
+            <option>Masculino</option>
+            <option>Femenino</option>
+          </select>
+        </div>
       </div>
-    </div>
 
+      <div class="form-row p-2">
+        <div class="col">
+          <label for="name"><i class="fa-solid fa-id-badge"></i> Edad</label>
+          <input type="number" class="form-control" placeholder="Edad" id="age" name="age" min="1" max="100"
+            value="{{links.age}}">
+        </div>
+        <div class="col">
+          <label for="Genero"><i class="fa-solid fa-syringe"></i> Tipo de sangre</label>
+          <select class="form-control" id="bt" name="bt">
+            <option>{{links.bt}}</option>
+            <option>A+</option>
+            <option>B+</option>
+            <option>O+</option>
+            <option>AB+</option>
+            <option>A-</option>
+            <option>B-</option>
+            <option>O-</option>
+            <option>AB-</option>
+          </select>
+        </div>
 
-    <div class="form-row p-2">
-      <div class="col">
-        <label for="name">Ocupación</label>
-        <input type="text" class="form-control" placeholder="Ocupación" id="oc" name="oc" value="{{links.oc}}">
+        <div class="col">
+          <label for="name"><i class="fa-solid fa-calendar-days"></i> Fecha de nacimiento</label>
+          <input type="date" class="form-control" placeholder="Fecha de nacimiento" id="date" name="date">
+
+        </div>
       </div>
-      <div class="col">
-        <label for="Genero">Estado Civil</label>
-        <select class="form-control" id="ec" name="ec">
-          <option>{{links.ec}}</option>
-          <option>Soltero</option>
-          <option>Casado</option>
-          <option>Viudo</option>
-          <option>Divorsiado</option>
-          <option>Union libre</option>
-        </select>
+
+
+      <div class="form-row p-2">
+        <div class="col">
+          <label for="name"><i class="fa-solid fa-briefcase"></i> Ocupación</label>
+          <input type="text" class="form-control" placeholder="Ocupación" id="oc" name="oc" value="{{links.oc}}">
+        </div>
+        <div class="col">
+          <label for="Genero"><i class="fa-solid fa-ring"></i> Estado Civil</label>
+          <select class="form-control" id="ec" name="ec">
+            <option>{{links.ec}}</option>
+            <option>Soltero</option>
+            <option>Casado</option>
+            <option>Viudo</option>
+            <option>Divorsiado</option>
+            <option>Union libre</option>
+          </select>
+        </div>
+        <div class="col">
+          <label for="name"><i class="fa-solid fa-mobile"></i> Celular</label>
+          <input type="tel" class="form-control" placeholder="Celular" id="tel" name="phone" value="{{links.phone}}">
+        </div>
       </div>
-      <div class="col">
-        <label for="name">Celular</label>
-        <input type="tel" class="form-control" placeholder="Celular" id="tel" name="phone" value="{{links.phone}}">
+
+
+
+
+
+
+      <div class="form-row p-2">
+        <div class="col">
+          <label for="name"><i class="fa-solid fa-earth-americas"></i> Direccion</label>
+          <input type="text" class="form-control" placeholder="address" id="add" name="address"
+            value="{{links.address}}">
+        </div>
+        <div class="col">
+          <label for="apellidos"><i class="fa-solid fa-city"></i> Barrio</label>
+          <input type="text" class="form-control" placeholder="Place of residence" id="pr" name="pr"
+            value="{{links.pr}}">
+        </div>
       </div>
-    </div>
 
-
-
-
-
-
-    <div class="form-row p-2">
-      <div class="col">
-        <label for="name">Address</label>
-        <input type="text" class="form-control" placeholder="address" id="add" name="address" value="{{links.address}}">
+      <div class="form-group p-2">
+        <button class="btn btn-success btn-block">
+          Enviar
+        </button>
       </div>
-      <div class="col">
-        <label for="apellidos">Place of residence</label>
-        <input type="text" class="form-control" placeholder="Place of residence" id="pr" name="pr" value="{{links.pr}}">
-      </div>
-    </div>
 
-    <div class="form-group p-2">
-      <button class="btn btn-success btn-block">
-        Enviar
-      </button>
-    </div>
+    </form>
 
-  </form>
-
-</div>
+  </div>
 
 
-<script>
- 
-  let da = new Date("{{encodeMyString links.date}}")
-  let d  = da.toLocaleDateString("fr-CA");
-  document.getElementById("date").setAttribute('value',d);
-</script>
+  <script>
+
+    let da = new Date("{{encodeMyString links.date}}")
+    let d = da.toLocaleDateString("fr-CA");
+    document.getElementById("date").setAttribute('value', d);
+  </script>
+
+</body>

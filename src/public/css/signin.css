@@ -1,0 +1,51 @@
+
+
+ .sigmain{
+    background: radial-gradient(  rgb(158, 202, 231),
+    rgba(0, 255, 221, 0.918));
+    font-family: sans-serif;
+    
+    overflow: auto;
+    height: 100%;
+    width: auto;
+    margin: 0%;
+    padding: 0%;
+}
+ 
+#cardi{
+  
+    width: auto;
+    background-color:#ffffff;
+   
+  
+  }
+  
+  #conta1{
+    width: auto;
+    padding: 1%;
+  }
+  
+  
+ /*  #conta2{
+    width: 90%;
+    padding: 5%;
+  } */
+  
+
+  #pills-tab{
+  
+    display:table !important;
+    width:100%;
+  }
+  
+  #pills-tab .nav-link {
+      border-radius: 0px;
+          border-bottom: 1px solid #0d6efd40;
+  
+  }
+  
+  #item{
+        display: table-cell;
+         background: #0d6efd2e;
+  }
+  

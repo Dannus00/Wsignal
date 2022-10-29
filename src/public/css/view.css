@@ -1,0 +1,18 @@
+#target {
+
+    height: 650px;
+    width: 1000px;
+    background-color: aquamarine;
+    margin: 2px;
+
+}
+
+#card{
+
+    height: 50%;
+    width: 100%;
+ }
+
+ #registro{
+    background: rgb(158, 202, 231);
+ }

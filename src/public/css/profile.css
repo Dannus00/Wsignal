@@ -1,0 +1,13 @@
+
+.cart{
+    color: #000;
+}
+.cart:hover{
+    background:linear-gradient(  rgba(230, 230, 230, 0.896),
+    rgba(17, 127, 206, 0.918));
+    transition: 0.2s;
+    color: rgb(255, 255, 255);
+    border: rgb(12, 47, 121) solid;
+    
+}
+

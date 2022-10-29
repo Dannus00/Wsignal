@@ -9,16 +9,22 @@ body {
     padding: 0%;
 }
 
-
+#bod{
+  width: 100%;
+  height: 100%;
+}
 
 .index {
 
-    height: 100%;
+    height: auto;
     width: auto;
-    background: url('/img/banner_img.png');
+    background: url('/img/foto.jpg');
     background-position: center center;
     background-repeat: no-repeat;
-    padding-top: 8rem;
+    background-size: 100% 100%;
+    background-color: black;
+    padding-top: 8.25rem;
+    margin: 0%;
 
 
 }
@@ -27,7 +33,7 @@ body {
     color: black;
     min-height: 30rem;
     width: auto;
-    height: auto;
+    height: 120%;
 
 
 }
@@ -48,46 +54,7 @@ body {
 }
 
 
-#cardi{
-  
-    width: 600px;
-    border:none;
-  
-  }
-  
-  #conta1{
-    width: 600px;
-  }
-  
 
-  #pills-tab{
-  
-    display:table !important;
-    width:100%;
-  }
-  
-  #pills-tab .nav-link {
-      border-radius: 0px;
-          border-bottom: 1px solid #0d6efd40;
-  
-  }
-  
-  #item{
-        display: table-cell;
-         background: #0d6efd2e;
-  }
-  
-
-
-
-#target {
-
-    height: 650px;
-    width: 1000px;
-    background-color: aquamarine;
-    margin: 2px;
-
-}
 
 #lista{
 
@@ -96,11 +63,6 @@ body {
     margin: 2px;
 }
 
-#card{
-
-    height: 50%;
-    width: 100%;
- }
 
 
  #profile{
@@ -110,109 +72,96 @@ body {
  }
 
  #profil{
-	
+	width: 100%;
 	left: 5%;
 	padding-top: 100px;
 	padding-bottom: 50px;
  }
 
+/* .refer{
+   
+    background: rgb(11, 138, 170); 
+    transition: background-color .5s;
+    border-radius: 100%;
+} */
 
-.footer-20192 {
+/* .refer:hover{
+   background-color: rgba(10, 154, 238, 0.493);
+   transform: scale(1.1);
+   border-radius: 100%;
+}
+ */
+
+ .refer {
+    background-image: linear-gradient(
+      to right,
+      #54b3d6,
+      #54b3d6 50%,
+      rgb(255, 255, 255) 50%
+    );
+    background-size: 200% 100%;
+    background-position: -100%;
+    display: inline-block;
+    padding: 5px 0;
     position: relative;
-    color: #fff;
-    padding: 7rem 0;
-    background-color: #141d2a;
-}
-
-.footer-20192 .container {
-    position: relative;
-}
-
-.footer-20192 h3 {
-    font-size: 16px;
-    margin-bottom: 10px;
-    margin-top: 0;
-    line-height: 1.5;
-}
-
-.footer-20192 .links li {
-    margin-bottom: 10px;
-    line-height: 1.5;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .refer:before{
+    content: '';
+    background: #54b3d6;
     display: block;
-}
-
-.footer-20192 .links li a {
-    color: #666873;
-}
-
-.footer-20192 .links li a:hover {
-    color: #fff;
-}
-
-.footer-20192 .social li {
-    display: inline-block;
-    position: relative;
-}
-
-.footer-20192 .social li a {
-    position: relative;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: inline-block;
-    margin: 0;
-    padding: 0;
-    background-color: #8186d5;
-    color: #fff;
-}
-
-.footer-20192 .social li a>span {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-}
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .refer:hover {
+   background-position: 0;
+  }
+  
+  .refer:hover::before{
+    width: 100%;
+  }
 
-.footer-20192 .footer-logo {
-    color: #fff;
-    font-size: 20px;
-    text-transform: uppercase;
-    letter-spacing: .1rem;
-}
-
-.footer-20192 .copyright {
-    color: #666873;
-}
-
-.footer-20192 .cta {
-    -webkit-box-shadow: -20px -20px 0 0 rgba(52, 58, 64, 0.2);
-    box-shadow: -20px -20px 0 0 rgba(52, 58, 64, 0.2);
-    padding: 20px;
-    background-color: #8186d5;
-    top: -150px;
+ /*  .bn39 {
+    background-image: linear-gradient(135deg, #008aff, #86d472);
+    border-radius: 6px;
+    box-sizing: border-box;
+    color: #ffffff;
+    display: block;
+    height: 50px;
+    font-size: 1.4em;
+    font-weight: 600;
+    padding: 4px;
     position: relative;
-}
-
-.footer-20192 .cta h2,
-.footer-20192 .cta h3 {
-    line-height: 1.5;
-}
-
-.footer-20192 .cta h3 {
-    font-size: 20px;
-}
-
-
-#headeradmins{
-
-    background-color: #2b2c2e;
-    color: darkorange;
-}
-
-#admins{
-
-    background-color: #2b2c2e;
-}
-
+    text-decoration: none;
+    width: 7em;
+    z-index: 2;
+    left: 45%;
+  }
+  
+  .bn39:hover {
+    color: #fff;
+  }
+  
+  .bn39 .bn39span {
+    align-items: center;
+    background: #0e0e10;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    transition: background 0.5s ease;
+    width: 100%;
+  }
+  
+  .bn39:hover .bn39span {
+    color: rgb(189, 238, 234);
+  } */

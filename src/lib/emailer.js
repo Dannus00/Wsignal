@@ -104,7 +104,7 @@ require('dotenv').config()
                                                style="font-size:16px;line-height:24px;font-family:Arial,sans-serif;">
                                               
                                                <p>Inicie sesion con: </p>
-                                               <p>Usuario: ${user.username} </p>
+                                               <p>Usuario: ${user.usern} </p>
                                                <p>Contraseña: ${user.password} </p>
                                                <p
                                                style="margin:0;font-size:28px;line-height:16px;font-family:Arial,sans-serif;color:#19bbe4;">

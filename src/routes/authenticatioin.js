@@ -5,6 +5,7 @@ const helpers = require('../lib/helpers');
 const {isLoggedIn} = require('../lib/out');
 const {isNotLoggedIn} = require('../lib/out');
 const pool = require('../database');
+const {roladmin,roldoc,roluser} = require('../lib/roles')
 let ecg 
 let ppg
 let resp
@@ -28,7 +29,7 @@ router.post('/signin', passport.authenticate('local.signin',{
 }));
 
 
-router.get('/profile',isLoggedIn,(req,res)=>{
+router.get('/profile',isLoggedIn, roldoc(["doctor"]) ,(req,res)=>{
 
     res.render('profile')
 });
@@ -37,12 +38,12 @@ router.get('/profile',isLoggedIn,(req,res)=>{
 router.get("/logout",isLoggedIn, (req, res) => {
     req.logout(req.user, err => {
       if(err) return next(err);
-      res.redirect("/signin");
+      res.redirect("/");
     });
 });
 
 
-router.get('/registro',isLoggedIn,(req,res)=>{
+router.get('/registro',isLoggedIn,roldoc(["doctor"]) ,(req,res)=>{
 
     res.render('auth/registro')
 });
@@ -125,7 +126,7 @@ router.post('/admins', passport.authenticate('local.admins',{
 }));
 
 
-router.get('/admin/adminregistsecret', isLoggedIn,(req,res)=>{
+router.get('/admin/adminregistsecret', isLoggedIn,roladmin(["admin"]) ,(req,res)=>{
 
     res.render('auth/adminregist')
 });
