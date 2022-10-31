@@ -16,3 +16,73 @@
  #registro{
     background: rgb(158, 202, 231);
  }
+
+
+ @media screen and (max-width: 600px) {
+    table {
+        width:100%;
+    }
+    thead {
+        display: none;
+    }
+    tr:nth-of-type(2n) {
+        background-color: inherit;
+    }
+    tr td:first-child {
+        background: #f0f0f0;
+        font-weight:bold;
+        font-size:1.3em;
+    }
+    tbody td {
+        display: block;
+        text-align:center;
+    }
+    tbody td:before {
+        content: attr(data-th);
+        display: block;
+        text-align:center;
+    }
+
+    
+}
+
+
+@media screen and (max-width: 320px) {
+    table {
+      display: block;
+      overflow-x: auto;
+    }
+}
+
+
+.custom-file-input {
+    color: transparent;
+  }
+  .custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+  .custom-file-input::before {
+    content: 'Select some files';
+    color: black;
+    display: inline-block;
+    background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
+    border: 1px solid #999;
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+  
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    font-weight: 700;
+    font-size: 10pt;
+  }
+  .custom-file-input:hover::before {
+    border-color: black;
+  }
+  .custom-file-input:active {
+    outline: 0;
+  }
+  .custom-file-input:active::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9); 
+  }

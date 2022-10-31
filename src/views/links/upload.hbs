@@ -32,41 +32,35 @@
   </div>
 </nav>
 
+
+
+<Div class="container">
+  <h1 style="padding-top: 3%; position:relative;">Historial Diagnostico</h1>
+</Div>
 <div class=" p-4" id="lista">
   <table class="table table-striped shadow-lg" style="width: 100%; position:relative" id="example">
 
         <thead>
             <tr>
                 <th>#</th>
-                <th>Name</th>
-                <th>Lastname</th>
-                <th>Identification</th>
-                <th>Editar</th>
-                <th>Señales</th>
                 <th>Diagnostico</th>
-                <th>Historial Diagnostico</th>
-                <th>Eliminar</th>
+                <th>Fecha</th>
+               
             </tr>
         </thead>
         <tbody>
-          {{#each links}}
+          {{#each data}}
             <tr>
                 <th>{{id}}</th>
-                <td>{{name}}</td>
-                <td>{{lastname}}</td>
-                <td>{{ident}}</td>
-                <td> <a href="/edit/{{id}}" class="btn btn-primary" style="width:110px">Editar</a></td>
-                <td><a href="/view/{{id}}" class="btn btn-info" style="width:110px">Visualizar</a></td>
-                <td><a href="/diagnostico/{{id}}" class="btn btn-warning" style="width:110px ; color:white">Diagnosticar</a></td>
-                <td><a href="/uploadd/{{id}}" class="btn btn-success" style="width:150px ; color:white; font-size:13px">Historial diagnostico</a></td>
-                <td><a href="/delete/{{id}}" class="btn btn-danger" style="width:110px">Borrar</a></td>
+                <td><a href="/upload/{{diagpdf}}">{{diagpdf}}</a></td>
+                <td>{{datediag}}</td>
             </tr>
 
              {{else}}
         <div class="col-md-4 mx-auto">
           <div class="card card-body text center">
-            <p>No hay Pacientes registrados</p>
-            <a href="/registro">Registra uno</a>
+            <p>No hay Diagnosticos Disponibles Para este paciente</p>
+           
           </div>
         </div>
         {{/each}}
@@ -74,9 +68,29 @@
         </tbody> 
   </table>
 </div>
+ 
+<Div class="container">
+  
 
 
+      <form action="/uploadd" method="post" enctype="multipart/form-data">
 
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-">
+                        <input type="file" name="sampleFile" id="filepdf">
+                      </div>
+                      <div class="col-sm">
+                       
+                          <button class="btn btn-primary btn-block shadow-lg border border-dark"
+                            style="width: 25%;">
+                            Subir
+                          </button>
+                      
+                      </div>
+                    </div>
+      
+      </form>
+  
 
-
-
+</Div>

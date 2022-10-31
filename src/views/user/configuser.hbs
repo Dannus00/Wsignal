@@ -7,12 +7,10 @@
             class="fa-solid fa-house-user"></i> Inicio</a>
       </li>
       <li class="nav-item">
-        <a href="/profile" class="nav-link font-weight-bold  shadow-lg  refer" style="color: rgb(247, 240, 240);"><i
-            class="fa-solid fa-user-doctor"></i> Perfil</a>
+        <a href="/profileUser" class="nav-link font-weight-bold  shadow-lg  refer" style="color: rgb(247, 240, 240);"><i class="fa-solid fa-user"></i> Perfil</a>
       </li>
       <li class="nav-item">
-        <a href="/list" class="nav-link font-weight-bold  shadow-lg  refer" style="color: white;"><i
-            class="fa-solid fa-kit-medical"></i> Pacientes</a>
+        <a href="/HistoUser" class="nav-link font-weight-bold  shadow-lg  refer" style="color: white;"><i class="fa-solid fa-folder-open"></i> Historia clinica</a>
       </li>
     </ul>
     <ul class="navbar-nav">
@@ -23,7 +21,7 @@
             style="width:35px ; border: solid rgb(103, 192, 214);">
         </a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="/Settings"><i class="fa-solid fa-gear"></i> Configuracion</a>
+          <a class="dropdown-item" href="/settingsUser"><i class="fa-solid fa-gear"></i> Configuracion</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="/logout"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesion</a>
         </div>
@@ -31,6 +29,7 @@
     </ul>
   </div>
 </nav>
+
 
 
 <div class="container light-style flex-grow-1 container-p-y">
@@ -65,7 +64,7 @@
                 </div> --}}
                 <div class="form-group">
                   <label class="form-label">Nombre</label>
-                  <input type="text" class="form-control" value="{{user.username}}">
+                  <input type="text" class="form-control" value="{{links.name}}">
 
 
 
@@ -73,12 +72,12 @@
                 <div class="form-group">
 
                   <label for="apellidos"> Apellidos</label>
-                  <input type="text" class="form-control" value="{{user.lastname}}">
+                  <input type="text" class="form-control" value="{{links.lastname}}">
 
                 </div>
                 <div class="form-group">
                   <label class="form-label">E-mail</label>
-                  <input type="text" class="form-control mb-1" value="{{user.email}}">
+                  <input type="text" class="form-control mb-1" value="{{links.emailpacient}}">
                 </div>
               </div>
               <div class="form-group p-2">
@@ -90,7 +89,7 @@
             </form>
           </div>
           <div class="tab-pane fade" id="account-change-password">
-            <form action='/Settings' method="post">
+            <form action='/settingnsUser' method="post">
               <div class="card-body pb-2">
 
                 <div class="form-group">

@@ -131,6 +131,43 @@ passport.use('local.adminR', new LocalStrategy({
  
   
 }));
+ 
+
+
+passport.use('local.user', new LocalStrategy({
+   usernameField: 'usern',
+   passwordField: 'password',
+   passReqToCallback: true
+
+}, async(req,usern,password,done)=>{
+
+   
+   const rows = await pool.query('SELECT * FROM database_medical.userpacient WHERE username =?', [usern])
+
+   console.log(rows)
+    
+    if (rows.length > 0){
+
+      const user = rows[0];
+      
+      /*const validpassword = await pool.query('SELECT * FROM doctors WHERE password =?', [password])*/
+      const validpassword = await helpers.matchPassword(password, user.password);
+      
+      if(validpassword){
+
+         done(null, user, req.flash('Success','Welcome' + user.username));
+      }else{
+
+         done(null,false, req.flash('message','Incorrect Password'));
+      }
+    }else{
+
+      return done(null,false,req.flash('message','The username does not Exists'))
+    } 
+
+
+}));
+
 
 
 

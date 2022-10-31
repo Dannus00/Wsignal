@@ -7,12 +7,10 @@
             class="fa-solid fa-house-user"></i> Inicio</a>
       </li>
       <li class="nav-item">
-        <a href="/profile" class="nav-link font-weight-bold  shadow-lg  refer" style="color: rgb(247, 240, 240);"><i
-            class="fa-solid fa-user-doctor"></i> Perfil</a>
+        <a href="/profileUser" class="nav-link font-weight-bold  shadow-lg  refer" style="color: rgb(247, 240, 240);"><i class="fa-solid fa-user"></i> Perfil</a>
       </li>
       <li class="nav-item">
-        <a href="/list" class="nav-link font-weight-bold  shadow-lg  refer" style="color: white;"><i
-            class="fa-solid fa-kit-medical"></i> Pacientes</a>
+        <a href="/HistoUser" class="nav-link font-weight-bold  shadow-lg  refer" style="color: white;"><i class="fa-solid fa-folder-open"></i> Historia clinica</a>
       </li>
     </ul>
     <ul class="navbar-nav">
@@ -23,7 +21,7 @@
             style="width:35px ; border: solid rgb(103, 192, 214);">
         </a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="/Settings"><i class="fa-solid fa-gear"></i> Configuracion</a>
+          <a class="dropdown-item" href="/settingsUser"><i class="fa-solid fa-gear"></i> Configuracion</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="/logout"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesion</a>
         </div>
@@ -36,16 +34,16 @@
 
 
   <div class="container p-4 shadow-lg " style="background-color: rgba(255, 255, 255, 0.603) ;">
-    <form action="/edit/{{links.id}}" method="post">
+    <form action="" method="post">
       <div class="form-row p-2">
         <div class="col">
           <label for="name"><i class="far fa-user"></i> Nombre</label>
-          <input type="text" class="form-control" placeholder="Nombre" id="name" name="name" value="{{links.name}}">
+          <input type="text" class="form-control" placeholder="Nombre" id="name" name="name" value="{{links.name}}" disabled>
         </div>
         <div class="col">
           <label for="apellidos"><i class="fas fa-user"></i> Apellidos</label>
           <input type="text" class="form-control" placeholder="Apellidos" id="apellidos" name="lastname"
-            value="{{links.lastname}}">
+            value="{{links.lastname}}" disabled>
         </div>
       </div>
 
@@ -53,11 +51,11 @@
         <div class="col">
           <label for="name"><i class="fa-regular fa-id-card"></i> Indentificación</label>
           <input type="text" class="form-control" placeholder="Identificación" id="name" name="ident"
-            value="{{links.ident}}">
+            value="{{links.ident}}" disabled>
         </div>
         <div class="col">
           <label for="Genero"><i class="fa-sharp fa-solid fa-venus-mars"></i> Sexo</label>
-          <select class="form-control" id="Genero" name="gender">
+          <select class="form-control" id="Genero" name="gender" disabled>
             <option>{{links.gender}}</option>
             <option>Masculino</option>
             <option>Femenino</option>
@@ -69,11 +67,11 @@
         <div class="col">
           <label for="name"><i class="fa-solid fa-id-badge"></i> Edad</label>
           <input type="number" class="form-control" placeholder="Edad" id="age" name="age" min="1" max="100"
-            value="{{links.age}}">
+            value="{{links.age}}" disabled>
         </div>
         <div class="col">
           <label for="Genero"><i class="fa-solid fa-syringe"></i> Tipo de sangre</label>
-          <select class="form-control" id="bt" name="bt">
+          <select class="form-control" id="bt" name="bt" disabled>
             <option>{{links.bt}}</option>
             <option>A+</option>
             <option>B+</option>
@@ -88,7 +86,7 @@
 
         <div class="col">
           <label for="name"><i class="fa-solid fa-calendar-days"></i> Fecha de nacimiento</label>
-          <input type="date" class="form-control" placeholder="Fecha de nacimiento" id="date" name="date">
+          <input type="date" class="form-control" placeholder="Fecha de nacimiento" id="date" name="date" disabled>
 
         </div>
       </div>
@@ -97,11 +95,11 @@
       <div class="form-row p-2">
         <div class="col">
           <label for="name"><i class="fa-solid fa-briefcase"></i> Ocupación</label>
-          <input type="text" class="form-control" placeholder="Ocupación" id="oc" name="oc" value="{{links.oc}}">
+          <input type="text" class="form-control" placeholder="Ocupación" id="oc" name="oc" value="{{links.oc}}" disabled>
         </div>
         <div class="col">
           <label for="Genero"><i class="fa-solid fa-ring"></i> Estado Civil</label>
-          <select class="form-control" id="ec" name="ec">
+          <select class="form-control" id="ec" name="ec" disabled>
             <option>{{links.ec}}</option>
             <option>Soltero</option>
             <option>Casado</option>
@@ -112,7 +110,7 @@
         </div>
         <div class="col">
           <label for="name"><i class="fa-solid fa-mobile"></i> Celular</label>
-          <input type="tel" class="form-control" placeholder="Celular" id="tel" name="phone" value="{{links.phone}}">
+          <input type="tel" class="form-control" placeholder="Celular" id="tel" name="phone" value="{{links.phone}}" disabled>
         </div>
       </div>
 
@@ -125,21 +123,14 @@
         <div class="col">
           <label for="name"><i class="fa-solid fa-earth-americas"></i> Direccion</label>
           <input type="text" class="form-control" placeholder="address" id="add" name="address"
-            value="{{links.address}}">
+            value="{{links.address}}" disabled>
         </div>
         <div class="col">
           <label for="apellidos"><i class="fa-solid fa-city"></i> Barrio</label>
           <input type="text" class="form-control" placeholder="Place of residence" id="pr" name="pr"
-            value="{{links.pr}}">
+            value="{{links.pr}}" disabled>
         </div>
       </div>
-
-      <div class="form-group p-2">
-        <button class="btn btn-success btn-block">
-          Enviar
-        </button>
-      </div>
-
     </form>
 
   </div>

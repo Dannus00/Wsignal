@@ -1,0 +1,218 @@
+<nav class="navbar navbar-expand-lg navbar-light shadow-lg" style="background-color: #0c0846;">
+  <div class="container ">
+    <a class="navbar-brand " style="color:rgb(236, 236, 236);" href="/">🩺 MedicalSignal 🩺</a>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a href="/signin" class="nav-link font-weight-bold  shadow-lg  refer" style="color: white;"><i
+            class="fa-solid fa-house-user"></i> Inicio</a>
+      </li>
+      <li class="nav-item">
+        <a href="/profile" class="nav-link font-weight-bold  shadow-lg  refer" style="color: rgb(247, 240, 240);"><i
+            class="fa-solid fa-user-doctor"></i> Perfil</a>
+      </li>
+      <li class="nav-item">
+        <a href="/list" class="nav-link font-weight-bold  shadow-lg  refer" style="color: white;"><i
+            class="fa-solid fa-kit-medical"></i> Pacientes</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav">
+      <div class="dropdown show" style="padding-left: 5%;">
+        <a class=" mr-4" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+          style="color: black;">
+          <img src="/img/equipo-medico.png" alt="logo" class="mx-auto m-2 rounded-circle"
+            style="width:35px ; border: solid rgb(103, 192, 214);">
+        </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="/Settings"><i class="fa-solid fa-gear"></i> Configuracion</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/logout"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesion</a>
+        </div>
+      </div>
+    </ul>
+  </div>
+</nav>
+
+<body id="registro">
+
+
+ <div class="container p-4 shadow-lg"
+        style="background-color: rgba(255, 255, 255, 0.603) ; top: 10%; position: relative;">
+        <div class="pdf" id="pdf">
+            <h1 style="text-align: center;">MedicalSignal</h1>
+            <form action="/registro" method="post">
+                <div class="form-row p-2 border border-bottom-0 border-dark">
+                   
+                    <div class="col">
+                        <label for="direccion"  > Direccion: </label>
+                        <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Nombre" name="direccion" value="{{data.address}}">
+                    </div>
+                    
+                    <div class="col">
+                        <label for="barrio" > Barrio: </label>
+                        <input type="text" class="form-control" placeholder="Apellidos"
+                            id="apellidos" name="barrio" value="{{data.pr}}">
+                    </div>
+                    
+                    <div class="col">
+                        <label for="direccion"  > Fecha de formulacion: </label>
+                        <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Nombre" name="fechaform" id="fechform">
+                    </div>
+                </div>
+    
+                <div class="form-row p-2 border border-top-0 border-bottom-0 border-dark">
+                    <div class="col">
+                        <label for="Paciente">Paciente: </label>
+                        <input type="text" class="form-control" placeholder="Identificación" name="Paciente" value="{{data.ident}}">
+                    </div>
+                    <div class="col">
+                        <label for="histo">Historia clinica: </label>
+                        <input class="form-control" id="Genero" name="histo" value="{{data.id}}"></input>
+                    </div>
+                    <div class="col">
+                        <label for="name">Nombre: </label>
+                        <input class="form-control" id="Genero" name="name" value="{{data.name}} {{data.lastname}}"></input>
+                    </div>
+                  
+                </div>
+    
+                <div class="form-row p-2 border border-top-0 border-bottom-0  border-dark">
+                    <div class="col">
+                        <label for="edad">Edad: </label>
+                        <input class="form-control" id="Genero" name="edad" value="{{data.age}}"></input>
+                    </div>
+                    <div class="col">
+                        <label for="tb">Tipo de sangre: </label>
+                        <input class="form-control" id="Genero" name="tb" value="{{data.bt}}"></input>
+                    </div>
+    
+                    <div class="col">
+                        <label for="birt">Fecha de nacimiento: </label>
+                        <input class="form-control" id="date" name="birt"></input>
+                    </div>
+                </div>
+    
+    
+                <div class="form-row p-2  border border-top-0  border-dark">
+                    <div class="col">
+                        <label for="birt">Empresa que Autoriza: </label>
+                        <input class="form-control" id="Genero" name="birt" value="Medical Signal"></input>
+                    </div>
+                    <div class="col">
+                        <label for="autname">Nombre de quien Autoriza: </label>
+                        <input class="form-control" id="Genero" name="autname" value="Dr. {{user.username}} {{user.lastname}}"></input>
+                    </div>
+                </div>
+    
+    
+    
+    
+    
+    
+                <div class="form-row p-2 border border-top-0 border-bottom-0 border-dark">
+                    <div class="col">
+                        <label for="desp">Descripcion: </label>
+                        <input class="form-control" id="Genero" name="desp"></input>
+                    </div>
+                </div>
+
+                <div class="form-row p-2 border border-top-0  border-bottom-0 border-dark">
+                    <div class="col">
+                        <label for="dosis">Dosis: </label>
+                        <input class="form-control" id="Genero" name="dosis"></input>
+                    </div>
+                    <div class="col">
+                        <label for="Via">Via: </label>
+                        <input class="form-control" id="Genero" name="Via"></input>
+                    </div>
+                    <div class="col">
+                        <label for="fre">Frecuencia: </label>
+                        <input class="form-control" id="Genero" name="fre"></input>
+                    </div>
+                    <div class="col">
+                        <label for="dur">Duracion: </label>
+                        <input class="form-control" id="Genero" name="dur"></input>
+                    </div>
+                    <div class="col">
+                        <label for="cant">Cantidad: </label>
+                        <input class="form-control" id="Genero" name="cant"></input>
+                    </div>
+                </div>
+                <div class="form-row p-2 border border-top-0  border-dark">
+                    <div class="col">
+                        <label for="obs">Observacion: </label>
+                        <input class="form-control" id="Genero" name="obs"></input>
+                    </div>
+                </div>
+    
+            </form>
+        </div>
+        <div class=" p-2" style="width: 25%; position: relative; left:35%;">
+            <button class="btn btn-primary btn-block shadow-lg border border-dark" id="btnpdf">
+                Generar
+            </button>
+        </div>
+    </div>
+
+
+</body>
+
+
+
+
+
+
+
+
+
+<script>
+
+    
+    const id = {{data.ident}}
+    
+
+    const tiempoTranscurrido = Date.now();
+    const hoy = new Date(tiempoTranscurrido);
+    let time = hoy.toLocaleDateString();
+    
+    document.getElementById('fechform').value=time
+
+    let da = new Date("{{encodeMyString data.date}}")
+    let d = da.toLocaleDateString("fr-CA");
+    document.getElementById("date").setAttribute('value', d);
+
+
+    const btn = document.getElementById("btnpdf")
+
+    btn.addEventListener("click", () => {
+
+        const element = document.getElementById("pdf")
+        html2pdf().set({
+
+            margin: 1,
+            filename: 'documento.pdf',
+            image: {
+                type: 'jpeg',
+                quality: 0.98
+            },
+
+            html2canvas: {
+
+                scale: 3,
+                letterRendering: true,
+            },
+            jsPDF: {
+                unit: "in",
+                format: "b4",
+                orientation: 'landscape'
+            }
+
+
+
+        }).from(element).save(id).catch(err => console.log(err));
+
+
+    });
+
+
+
+</script>

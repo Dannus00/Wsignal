@@ -7,12 +7,10 @@
             class="fa-solid fa-house-user"></i> Inicio</a>
       </li>
       <li class="nav-item">
-        <a href="/profile" class="nav-link font-weight-bold  shadow-lg  refer" style="color: rgb(247, 240, 240);"><i
-            class="fa-solid fa-user-doctor"></i> Perfil</a>
+        <a href="/profileUser" class="nav-link font-weight-bold  shadow-lg  refer" style="color: rgb(247, 240, 240);"><i class="fa-solid fa-user"></i> Perfil</a>
       </li>
       <li class="nav-item">
-        <a href="/list" class="nav-link font-weight-bold  shadow-lg  refer" style="color: white;"><i
-            class="fa-solid fa-kit-medical"></i> Pacientes</a>
+        <a href="/HistoUser" class="nav-link font-weight-bold  shadow-lg  refer" style="color: white;"><i class="fa-solid fa-folder-open"></i> Historia clinica</a>
       </li>
     </ul>
     <ul class="navbar-nav">
@@ -23,7 +21,7 @@
             style="width:35px ; border: solid rgb(103, 192, 214);">
         </a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="/Settings"><i class="fa-solid fa-gear"></i> Configuracion</a>
+          <a class="dropdown-item" href="/settingsUser"><i class="fa-solid fa-gear"></i> Configuracion</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="/logout"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesion</a>
         </div>
@@ -32,41 +30,35 @@
   </div>
 </nav>
 
+
+
+<Div class="container">
+  <h1 style="padding-top: 3%; position:relative;">Historial Diagnostico</h1>
+</Div>
 <div class=" p-4" id="lista">
   <table class="table table-striped shadow-lg" style="width: 100%; position:relative" id="example">
 
         <thead>
             <tr>
                 <th>#</th>
-                <th>Name</th>
-                <th>Lastname</th>
-                <th>Identification</th>
-                <th>Editar</th>
-                <th>Señales</th>
                 <th>Diagnostico</th>
-                <th>Historial Diagnostico</th>
-                <th>Eliminar</th>
+                <th>Fecha</th>
+               
             </tr>
         </thead>
         <tbody>
           {{#each links}}
             <tr>
                 <th>{{id}}</th>
-                <td>{{name}}</td>
-                <td>{{lastname}}</td>
-                <td>{{ident}}</td>
-                <td> <a href="/edit/{{id}}" class="btn btn-primary" style="width:110px">Editar</a></td>
-                <td><a href="/view/{{id}}" class="btn btn-info" style="width:110px">Visualizar</a></td>
-                <td><a href="/diagnostico/{{id}}" class="btn btn-warning" style="width:110px ; color:white">Diagnosticar</a></td>
-                <td><a href="/uploadd/{{id}}" class="btn btn-success" style="width:150px ; color:white; font-size:13px">Historial diagnostico</a></td>
-                <td><a href="/delete/{{id}}" class="btn btn-danger" style="width:110px">Borrar</a></td>
+                <td><a href="/upload/{{diagpdf}}">{{diagpdf}}</a></td>
+                <td>{{datediag}}</td>
             </tr>
 
              {{else}}
         <div class="col-md-4 mx-auto">
           <div class="card card-body text center">
-            <p>No hay Pacientes registrados</p>
-            <a href="/registro">Registra uno</a>
+            <p>No hay Diagnosticos Disponibles Para este paciente</p>
+           
           </div>
         </div>
         {{/each}}
@@ -74,9 +66,29 @@
         </tbody> 
   </table>
 </div>
+ 
+<Div class="container">
+  
 
 
+      <form action="/uploaduser" method="post" enctype="multipart/form-data">
 
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-">
+                        <input type="file" name="sampleFile" id="filepdf">
+                      </div>
+                      <div class="col-sm">
+                       
+                          <button class="btn btn-primary btn-block shadow-lg border border-dark"
+                            style="width: 25%;">
+                            Subir
+                          </button>
+                      
+                      </div>
+                    </div>
+      
+      </form>
+  
 
-
-
+</Div>

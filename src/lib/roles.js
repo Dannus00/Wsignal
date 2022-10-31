@@ -8,7 +8,7 @@ const roladmin = (permissions) =>{
 
             next()
         }else{
-               
+            req.flash('message','Usuario no permitido')    
             return res.redirect('/logout');
         } 
     }
@@ -25,7 +25,7 @@ const roldoc = (permissions1) =>{
 
             next()
         }else{
-
+            req.flash('message','Usuario no permitido')    
             return res.redirect('/logout');
         }
     }
@@ -42,7 +42,7 @@ const roluser = (permissions2) =>{
 
             next()
         }else{
-
+            req.flash('message','Usuario no permitido')    
             return res.redirect('/logout');
         }
     }

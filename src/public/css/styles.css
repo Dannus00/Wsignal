@@ -16,7 +16,7 @@ body {
 
 .index {
 
-    height: auto;
+    height: 100vh;
     width: auto;
     background: url('/img/foto.jpg');
     background-position: center center;
@@ -33,7 +33,7 @@ body {
     color: black;
     min-height: 30rem;
     width: auto;
-    height: 120%;
+    height: auto;
 
 
 }

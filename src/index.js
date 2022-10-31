@@ -8,12 +8,14 @@ const sessionadmin = require('express-session');
 const mysqlstore = require('express-mysql-session');
 const passport =require('passport');
 const {database} = require('./keys')
+const fileupload = require('express-fileupload');
 //inicializacion//
 const app = express();
 require('./lib/passport');
 
 
 //settings//
+
 app.use(express.json({limit: '10000kB'}));
 app.use(express.urlencoded({limit: '10000kB'}));
 app.set('port', process.env.PORT || 3000);
@@ -42,6 +44,7 @@ app.use(express.json());
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(fileupload());
 
 
 
@@ -61,12 +64,14 @@ app.use((req,res, next)=>{
 app.use(require('./routes/index'));
 app.use(require('./routes/authenticatioin'));
 app.use(require('./routes/links'));
+app.use(require('./routes/authpacient'));
 
 
 
 
 // public //
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 
 

@@ -1,3 +1,37 @@
+<nav class="navbar navbar-expand-lg navbar-light shadow-lg" style="background-color: #0c0846;">
+  <div class="container ">
+    <a class="navbar-brand " style="color:rgb(236, 236, 236);" href="/">🩺 MedicalSignal 🩺</a>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a href="/signin" class="nav-link font-weight-bold  shadow-lg  refer" style="color: white;"><i
+            class="fa-solid fa-house-user"></i> Inicio</a>
+      </li>
+      <li class="nav-item">
+        <a href="/profile" class="nav-link font-weight-bold  shadow-lg  refer" style="color: rgb(247, 240, 240);"><i
+            class="fa-solid fa-user-doctor"></i> Perfil</a>
+      </li>
+      <li class="nav-item">
+        <a href="/list" class="nav-link font-weight-bold  shadow-lg  refer" style="color: white;"><i
+            class="fa-solid fa-kit-medical"></i> Pacientes</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav">
+      <div class="dropdown show" style="padding-left: 5%;">
+        <a class=" mr-4" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+          style="color: black;">
+          <img src="/img/equipo-medico.png" alt="logo" class="mx-auto m-2 rounded-circle"
+            style="width:35px ; border: solid rgb(103, 192, 214);">
+        </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="/Settings"><i class="fa-solid fa-gear"></i> Configuracion</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/logout"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesion</a>
+        </div>
+      </div>
+    </ul>
+  </div>
+</nav>
+
 <body id="registro">
 
 
@@ -102,6 +136,10 @@
         <div class="col">
           <label for="apellidos"><i class="fa-solid fa-city"></i> Barrio</label>
           <input type="text" class="form-control shadow-lg border border-dark" placeholder="Barrio" id="pr" name="pr">
+        </div>
+        <div class="col">
+          <label for="apellidos"><i class="fa-solid fa-envelope"></i> Correo </label>
+          <input type="email" class="form-control shadow-lg border border-dark" placeholder="correo" id="pr" name="emailpacient">
         </div>
       </div>
 

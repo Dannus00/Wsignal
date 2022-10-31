@@ -81,33 +81,59 @@ router.post('/registro3', async (req,res)=>{
 
 router.post('/registro', isLoggedIn, async (req,res)=>{
 
-  const {name, lastname,ident,gender,age,bt,date,oc,ec,phone,address,pr } = req.body;
+  const {name, lastname,ident,gender,age,bt,date,oc,ec,phone,address,pr,emailpacient } = req.body;
   
-  
-  const newLink = {
-       name,
-       lastname,
-       ident,
-       gender,
-       age,
-       bt,
-       date,
-       oc,
-       ec,
-       phone,
-       address,
-       pr,
-       ecg,
-       ppg,
-       resp,
-       spo2,
-       puls,
-       rp
-  }; 
 
-  await pool.query('INSERT INTO pacientes set ?', [newLink]);
-  req.flash('Success', 'Paciente saved Successfully')
-  res.redirect('/profile');
+  const rows = await pool.query('SELECT name FROM database_medical.pacientes WHERE ident =?', [ident])
+  const rows2 = await pool.query('SELECT name FROM database_medical.pacientes WHERE emailpacient =?', [emailpacient])
+
+   if( rows.length > 0){
+
+    req.flash('message','El usuario ya se encuentra registrado')
+    res.redirect("/registro")
+
+   } else if(rows2.length > 0){
+
+    req.flash('message','El correo electrnocio ya se encuentra registrado')
+    res.redirect("/registro")
+
+
+   }else{
+  
+    const newLink = {
+        name,
+        lastname,
+        ident,
+        gender,
+        age,
+        bt,
+        date,
+        oc,
+        ec,
+        phone,
+        address,
+        pr,
+        ecg,
+        ppg,
+        resp,
+        spo2,
+        puls,
+        rp,
+        emailpacient
+   }; 
+
+   
+  
+ 
+   await pool.query('INSERT INTO pacientes set ?', [newLink]);
+   req.flash('Success', 'Paciente saved Successfully')
+   res.redirect('/profile');
+
+      
+
+   }
+  
+
 })
 
 router.get('/admin/ultrasecretsadmins', (req,res)=>{
