@@ -9,6 +9,7 @@ const {roladmin,roldoc,roluser} = require('../lib/roles')
 
 
 
+
 router.get('/profileUser',isLoggedIn, roluser(["paciente"]), (req,res)=>{
 
     res.render('user/pacientUser')
@@ -29,11 +30,11 @@ router.post('/userpacient', passport.authenticate('local.user',{
 
 router.get('/HistoUser',isLoggedIn, roluser(["paciente"]) ,async (req,res) =>{
   
-    const id = req.user.id;
+   /*  const id = req.user.id;
 
-    const links = await pool.query('SELECT name,lastname,ident,gender,age,bt,date,oc,ec,phone,address,pr,emailpacient FROM database_medical.pacientes WHERE id =?', [id]);
+    const links = await pool.query('SELECT name,lastname,ident,gender,age,bt,date,oc,ec,phone,address,pr,emailpacient FROM database_medical.pacientes WHERE id =?', [id]); */
    
-    res.render('user/histoUser', {links: links[0]});
+    res.render('user/histoUser');
 
 });
 
@@ -43,6 +44,7 @@ router.get('/UserDiagnostic',isLoggedIn, roluser(["paciente"]) ,async (req,res) 
     
 
     const id = req.user.id;
+    console.log(id)
 
 
     const links = await pool.query('SELECT * FROM database_medical.diagnostics WHERE idpaciente =?', [id]);
@@ -118,15 +120,15 @@ router.post('/settingnsUser',isLoggedIn, roluser(["paciente"]) ,async (req,res) 
     
    
    
-    if( req.user.username == useract){
+    if( req.user.usern == useract){
 
 
-        const validpassword = await helpers.matchPassword(passact, req.user.password);
+        const validpassword = await helpers.matchPassword(passact, req.user.passn);
         
         if(validpassword){
 
             passnew = await helpers.encrypts(passnew);
-            await pool.query(`UPDATE database_medical.userpacient set username = "${newuser}", password = "${passnew}" WHERE id =?`, [id])
+            await pool.query(`UPDATE database_medical.pacientes set usern = "${newuser}", passn = "${passnew}" WHERE id =?`, [id])
             req.flash('Success', `Datos actualizados correctamente`)
             res.redirect("/settingsUser")
         }else{

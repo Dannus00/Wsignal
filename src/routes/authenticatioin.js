@@ -6,6 +6,7 @@ const {isLoggedIn} = require('../lib/out');
 const {isNotLoggedIn} = require('../lib/out');
 const pool = require('../database');
 const {roladmin,roldoc,roluser} = require('../lib/roles')
+const emaileruser = require('../lib/emaileruser');
 let ecg 
 let ppg
 let resp
@@ -99,6 +100,9 @@ router.post('/registro', isLoggedIn, async (req,res)=>{
 
 
    }else{
+
+    let usern = name;
+    let passn = ident;
   
     const newLink = {
         name,
@@ -119,13 +123,24 @@ router.post('/registro', isLoggedIn, async (req,res)=>{
         spo2,
         puls,
         rp,
+        usern,
+        passn,
         emailpacient
    }; 
 
    
+   const newuser = {
+    name,
+    usern,
+    passn,
+    emailpacient
+ };
+
+     newLink.passn = await helpers.encrypts(passn);
   
  
    await pool.query('INSERT INTO pacientes set ?', [newLink]);
+   emaileruser.sendMail(newuser)
    req.flash('Success', 'Paciente saved Successfully')
    res.redirect('/profile');
 

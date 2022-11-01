@@ -38,12 +38,12 @@
       <div class="form-row p-2">
         <div class="col">
           <label for="name"><i class="far fa-user"></i> Nombre</label>
-          <input type="text" class="form-control" placeholder="Nombre" id="name" name="name" value="{{links.name}}" disabled>
+          <input type="text" class="form-control" placeholder="Nombre" id="name" name="name" value="{{user.name}}" disabled>
         </div>
         <div class="col">
           <label for="apellidos"><i class="fas fa-user"></i> Apellidos</label>
           <input type="text" class="form-control" placeholder="Apellidos" id="apellidos" name="lastname"
-            value="{{links.lastname}}" disabled>
+            value="{{user.lastname}}" disabled>
         </div>
       </div>
 
@@ -51,12 +51,12 @@
         <div class="col">
           <label for="name"><i class="fa-regular fa-id-card"></i> Indentificación</label>
           <input type="text" class="form-control" placeholder="Identificación" id="name" name="ident"
-            value="{{links.ident}}" disabled>
+            value="{{user.ident}}" disabled>
         </div>
         <div class="col">
           <label for="Genero"><i class="fa-sharp fa-solid fa-venus-mars"></i> Sexo</label>
           <select class="form-control" id="Genero" name="gender" disabled>
-            <option>{{links.gender}}</option>
+            <option>{{user.gender}}</option>
             <option>Masculino</option>
             <option>Femenino</option>
           </select>
@@ -67,12 +67,12 @@
         <div class="col">
           <label for="name"><i class="fa-solid fa-id-badge"></i> Edad</label>
           <input type="number" class="form-control" placeholder="Edad" id="age" name="age" min="1" max="100"
-            value="{{links.age}}" disabled>
+            value="{{user.age}}" disabled>
         </div>
         <div class="col">
           <label for="Genero"><i class="fa-solid fa-syringe"></i> Tipo de sangre</label>
           <select class="form-control" id="bt" name="bt" disabled>
-            <option>{{links.bt}}</option>
+            <option>{{user.bt}}</option>
             <option>A+</option>
             <option>B+</option>
             <option>O+</option>
@@ -95,12 +95,12 @@
       <div class="form-row p-2">
         <div class="col">
           <label for="name"><i class="fa-solid fa-briefcase"></i> Ocupación</label>
-          <input type="text" class="form-control" placeholder="Ocupación" id="oc" name="oc" value="{{links.oc}}" disabled>
+          <input type="text" class="form-control" placeholder="Ocupación" id="oc" name="oc" value="{{user.oc}}" disabled>
         </div>
         <div class="col">
           <label for="Genero"><i class="fa-solid fa-ring"></i> Estado Civil</label>
           <select class="form-control" id="ec" name="ec" disabled>
-            <option>{{links.ec}}</option>
+            <option>{{user.ec}}</option>
             <option>Soltero</option>
             <option>Casado</option>
             <option>Viudo</option>
@@ -110,7 +110,7 @@
         </div>
         <div class="col">
           <label for="name"><i class="fa-solid fa-mobile"></i> Celular</label>
-          <input type="tel" class="form-control" placeholder="Celular" id="tel" name="phone" value="{{links.phone}}" disabled>
+          <input type="tel" class="form-control" placeholder="Celular" id="tel" name="phone" value="{{user.phone}}" disabled>
         </div>
       </div>
 
@@ -123,12 +123,12 @@
         <div class="col">
           <label for="name"><i class="fa-solid fa-earth-americas"></i> Direccion</label>
           <input type="text" class="form-control" placeholder="address" id="add" name="address"
-            value="{{links.address}}" disabled>
+            value="{{user.address}}" disabled>
         </div>
         <div class="col">
           <label for="apellidos"><i class="fa-solid fa-city"></i> Barrio</label>
           <input type="text" class="form-control" placeholder="Place of residence" id="pr" name="pr"
-            value="{{links.pr}}" disabled>
+            value="{{user.pr}}" disabled>
         </div>
       </div>
     </form>
@@ -138,7 +138,7 @@
 
   <script>
 
-    let da = new Date("{{encodeMyString links.date}}")
+    let da = new Date("{{encodeMyString user.date}}")
     let d = da.toLocaleDateString("fr-CA");
     document.getElementById("date").setAttribute('value', d);
   </script>

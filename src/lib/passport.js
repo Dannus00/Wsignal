@@ -6,6 +6,7 @@ const emailer = require('../lib/emailer');
 
 
 
+
 passport.use('local.signin', new LocalStrategy({
     usernameField: 'usern',
     passwordField: 'password',
@@ -142,20 +143,21 @@ passport.use('local.user', new LocalStrategy({
 }, async(req,usern,password,done)=>{
 
    
-   const rows = await pool.query('SELECT * FROM database_medical.userpacient WHERE username =?', [usern])
+   const rows = await pool.query('SELECT id,name,lastname,ident,gender,age,bt,date,oc,ec,phone,address,pr,usern,passn,emailpacient,role FROM database_medical.pacientes WHERE usern =?', [usern])
 
    console.log(rows)
     
     if (rows.length > 0){
 
       const user = rows[0];
+      console.log(user.passn)
       
       /*const validpassword = await pool.query('SELECT * FROM doctors WHERE password =?', [password])*/
-      const validpassword = await helpers.matchPassword(password, user.password);
+      const validpassword = await helpers.matchPassword(password, user.passn);
       
       if(validpassword){
 
-         done(null, user, req.flash('Success','Welcome' + user.username));
+         done(null, user, req.flash('Success','Welcome' + user.usern));
       }else{
 
          done(null,false, req.flash('message','Incorrect Password'));
