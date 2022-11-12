@@ -22,9 +22,9 @@
             style="width:35px ; border: solid rgb(103, 192, 214);">
         </a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="/settingsUser"><i class="fa-solid fa-gear"></i> Configuracion</a>
+          <a class="dropdown-item" href="/settingsUser"><i class="fa-solid fa-gear"></i> Configuración</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="/logout"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesion</a>
+          <a class="dropdown-item" href="/logout"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</a>
         </div>
       </div>
     </ul>
@@ -36,8 +36,8 @@
     <div class="row" id="profil">
       <div class="col-md-4 ml-5">
 
-        <h3 class="font-weight-bold"> Bienvenido {{user.username}} </h3>
-        <p class="lead mb-o" style="font-size: 18px;">
+        <h3 id="ini" style="color:rgb(236, 236, 236)" class="font-weight-bold"> Bienvenido {{user.username}} </h3>
+        <p class="font-weight-bold" style="color:rgb(236, 236, 236);" style="font-size: 18px;">
           Consulte su historia clinica
           <br>
           Actualize y revise sus diagnosticos medicos
@@ -46,9 +46,9 @@
     </div>
   </container>
 
-  <div class="row p-2" id="profile">
+  <div  class="row p-2" id="profile">
     {{!-- <div class="row p-2" style="background-color:#cce2f1" id="profile"></div> --}}
-    <h3 class="mb-md-3 col-12 col-md-12 text-center font-weight-bold" style="color: #0033a0;">Servicios Disponibles</h3>
+    <h3 id="ini" class="mb-md-3 col-12 col-md-12 text-center font-weight-bold" style="color: #12bfdd;">Servicios Disponibles</h3>
     <div class="col-sm-4 mx-auto text-center profile">
       <div class="card shadow-lg">
         <a href="/HistoUser" class="card-link cart">

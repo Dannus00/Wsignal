@@ -11,3 +11,28 @@
     
 }
 
+@keyframes pan{
+    100% {background-position: 15% 50%;}
+  }
+#bod{
+    background-image: url("/img/csg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover ;
+    animation: pan 6s infinite alternate linear; 
+  
+      font-family: sans-serif;
+      
+      overflow: auto;
+      height: 100vh;
+      width: auto;
+      margin: 0%;
+      padding: 0%;
+
+
+}
+
+#ini{
+    
+        -webkit-text-stroke: 2px black;
+        color: transparent; 
+}

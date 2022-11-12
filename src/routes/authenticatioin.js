@@ -87,6 +87,7 @@ router.post('/registro3', async (req,res)=>{
 
 router.post('/registro', isLoggedIn, async (req,res)=>{
 
+  const role = "paciente";
   const {name, lastname,ident,gender,status,age,bt,date,oc,ec,phone,address,pr,emailpacient } = req.body;
   
 
@@ -144,7 +145,8 @@ router.post('/registro', isLoggedIn, async (req,res)=>{
         hr,
         usern,
         passn,
-        emailpacient
+        emailpacient,
+        role
    }; 
 
    
