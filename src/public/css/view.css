@@ -1,6 +1,7 @@
 .views{
 
   background-color: rgb(11, 11, 37);
+  overflow-x: hidden;
 }
 
 .gridcontainer{
@@ -18,7 +19,7 @@
 .one{
   grid-column: 1;
   width: 180vh;
-  height: 100%;
+
  
 
 }
@@ -156,3 +157,44 @@
   .custom-file-input:active::before {
     background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9); 
   }
+
+
+
+  .titulo{
+    position: relative;
+     left: 33%;
+  }
+
+  #principal{
+    width: 25%;
+    left: 35%;
+  }
+
+  .param{
+    font-size: 100px;
+  }
+
+  @media screen and (max-width: 600px) {
+    #principal{
+      width: 100%;
+      left: 0%;
+    }
+    
+    .titulo{
+      font-size: 2.1rem;
+      left: 1%;
+    }
+  
+    .two{
+      width: 10vh;
+
+    }
+
+    .param{
+      font-size: 55px;
+    }
+
+    #target{
+      height: 1200px;
+    }
+}

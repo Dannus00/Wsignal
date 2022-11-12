@@ -22,18 +22,20 @@ body {
     background-position: center center;
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    background-color: black;
-    padding-top: 8.25rem;
+
+    padding-top: 0%;
     margin: 0%;
 
 
 }
+
 
 .masthead {
     color: black;
     min-height: 30rem;
     width: auto;
     height: auto;
+    padding: 10%;
 
 
 }
@@ -53,7 +55,13 @@ body {
 
 }
 
-
+@media screen and (max-width: 600px) {
+    .masthead{
+      padding-top: 50%;
+    }
+    
+  
+}
 
 
 #lista{

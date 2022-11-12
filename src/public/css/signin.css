@@ -1,16 +1,33 @@
 
+@keyframes pan{
+  100% {background-position: 15% 50%;}
+}
 
  .sigmain{
-    background: radial-gradient(  rgb(158, 202, 231),
-    rgba(158, 202, 231));
+  background-image: url("/img/fondo.svg");
+  background-repeat: no-repeat;
+  background-size: cover ;
+  animation: pan 6s infinite alternate linear; 
+
     font-family: sans-serif;
     
     overflow: auto;
-    height: 100%;
+    height: 100vh;
     width: auto;
     margin: 0%;
     padding: 0%;
+    
+
+ 
 }
+
+@media (width >= 500px){
+  .sigmain{
+    padding: 0;
+  }
+}
+
+
  
 #cardi{
   
