@@ -2,10 +2,10 @@
   <div class="container ">
     <a class="navbar-brand " style="color:rgb(236, 236, 236);" href="/">🩺 MedicalSignal 🩺</a>
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
+     {{!--  <li class="nav-item">
         <a href="/signin" class="nav-link font-weight-bold  shadow-lg  refer" style="color: white;"><i
             class="fa-solid fa-house-user"></i> Inicio</a>
-      </li>
+      </li> --}}
       <li class="nav-item">
         <a href="/profile" class="nav-link font-weight-bold  shadow-lg  refer" style="color: rgb(247, 240, 240);"><i
             class="fa-solid fa-user-doctor"></i> Perfil</a>
@@ -41,6 +41,8 @@
                 <th>Name</th>
                 <th>Lastname</th>
                 <th>Identification</th>
+                <th>Estado</th>
+                <th>SH</th>
                 <th>Editar</th>
                 <th>Señales</th>
                 <th>Diagnostico</th>
@@ -55,6 +57,8 @@
                 <td>{{name}}</td>
                 <td>{{lastname}}</td>
                 <td>{{ident}}</td>
+                <td> <span class="{{status}}"></span></td>
+                <td>{{sh}}</td>
                 <td> <a href="/edit/{{id}}" class="btn btn-primary" style="width:110px">Editar</a></td>
                 <td><a href="/view/{{id}}" class="btn btn-info" style="width:110px">Visualizar</a></td>
                 <td><a href="/diagnostico/{{id}}" class="btn btn-warning" style="width:110px ; color:white">Diagnosticar</a></td>
@@ -74,8 +78,6 @@
         </tbody> 
   </table>
 </div>
-
-
 
 
 

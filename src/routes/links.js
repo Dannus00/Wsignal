@@ -12,7 +12,7 @@ let ide
 router.get('/list',isLoggedIn, roldoc(["doctor"]) ,async(req,res)=>{
 
 
-    const links = await pool.query('SELECT id,name,lastname,ident,created_at FROM database_medical.pacientes');
+    const links = await pool.query('SELECT id,name,lastname,ident,status,sh,created_at FROM database_medical.pacientes');
   
     res.render('links/list',{links})
 
@@ -35,6 +35,9 @@ router.get('/delete/:id', isLoggedIn, roldoc(["doctor"]) ,async (req,res)=>{
 
     const { id } = req.params;
     await pool.query('DELETE FROM database_medical.pacientes WHERE ID = ?', [id]);
+    await pool.query(`ALTER TABLE database_medical.pacientes AUTO_INCREMENT = 0`);
+    await pool.query('DELETE FROM database_medical.diagnostics WHERE idpaciente = ?', [id]);
+    await pool.query('ALTER TABLE database_medical.diagnostics AUTO_INCREMENT = 1');
     req.flash('Success', 'Link Romoved Successfully')
     res.redirect('/list');
 });
@@ -42,12 +45,13 @@ router.get('/delete/:id', isLoggedIn, roldoc(["doctor"]) ,async (req,res)=>{
 router.post('/edit/:id', isLoggedIn, async (req,res)=>{
     const { id } = req.params;
     
-    const {name, lastname,ident,gender,age,bt,date,oc,ec,phone,address,pr } = req.body;
+    const {name, lastname,ident,gender,status,age,bt,date,oc,ec,phone,address,pr } = req.body;
     const newLink = {
          name,
          lastname,
          ident,
          gender,
+         status,
          age,
          bt,
          date,
@@ -65,7 +69,7 @@ router.post('/edit/:id', isLoggedIn, async (req,res)=>{
 
 router.get('/view/:id',isLoggedIn, roldoc(["doctor"]) ,async (req,res) =>{
     const { id } = req.params;
-    const data = await pool.query('SELECT ecg,ppg,resp,spo2,puls,rp FROM database_medical.pacientes WHERE id =?', [id]);
+    const data = await pool.query('SELECT name,ident,age,ecg,ppg,resp,ifl,sound,spo2,puls,rp,hr FROM database_medical.pacientes WHERE id =?', [id]);
     
     
     res.render('links/view', {data: data[0]});
@@ -133,7 +137,7 @@ router.post('/uploadd', isLoggedIn, roldoc(["doctor"]), async (req,res) =>{
 
 
          req.flash('Success', 'Archivo Subido Correctamente')
-         res.redirect('/uploadd/:id');
+         res.redirect('/list');
        
          /* res.send('File Upload');*/
  

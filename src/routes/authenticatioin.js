@@ -10,9 +10,13 @@ const emaileruser = require('../lib/emaileruser');
 let ecg 
 let ppg
 let resp
+let ifl
+let sound
 let spo2
 let puls
 let rp
+let hr
+let sh
 //*********Signin***********+//
 router.get('/signin',isNotLoggedIn, (req,res)=>{
 
@@ -57,7 +61,8 @@ router.post('/registro2', async (req,res)=>{
               ecg = JSON.stringify(req.body[0])
               ppg = JSON.stringify(req.body[1])
               resp = JSON.stringify(req.body[2])
-             
+              ifl = JSON.stringify(req.body[3])
+              sound = JSON.stringify(req.body[4])
             
              /*fs.writeFileSync('src/JSON/data.json',JSON.stringify({data},null,2))*/
              res.sendStatus(200)
@@ -72,7 +77,7 @@ router.post('/registro3', async (req,res)=>{
     spo2 = JSON.stringify(req.body[0])
     puls = JSON.stringify(req.body[1])
     rp = JSON.stringify(req.body[2])
-   
+    hr = JSON.stringify(req.body[3])
   
    /*fs.writeFileSync('src/JSON/data.json',JSON.stringify({data},null,2))*/
    res.sendStatus(200)
@@ -82,7 +87,7 @@ router.post('/registro3', async (req,res)=>{
 
 router.post('/registro', isLoggedIn, async (req,res)=>{
 
-  const {name, lastname,ident,gender,age,bt,date,oc,ec,phone,address,pr,emailpacient } = req.body;
+  const {name, lastname,ident,gender,status,age,bt,date,oc,ec,phone,address,pr,emailpacient } = req.body;
   
 
   const rows = await pool.query('SELECT name FROM database_medical.pacientes WHERE ident =?', [ident])
@@ -101,6 +106,15 @@ router.post('/registro', isLoggedIn, async (req,res)=>{
 
    }else{
 
+       if (status == "indicator healt"){
+           
+           sh = 1
+       }else if(status == "indicator aler"){
+           sh = 2
+       }else {
+           sh = 3
+       }
+
     let usern = name;
     let passn = ident;
   
@@ -109,6 +123,8 @@ router.post('/registro', isLoggedIn, async (req,res)=>{
         lastname,
         ident,
         gender,
+        status,
+        sh,
         age,
         bt,
         date,
@@ -120,9 +136,12 @@ router.post('/registro', isLoggedIn, async (req,res)=>{
         ecg,
         ppg,
         resp,
+        ifl,
+        sound,
         spo2,
         puls,
         rp,
+        hr,
         usern,
         passn,
         emailpacient

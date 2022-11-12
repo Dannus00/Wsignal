@@ -107,7 +107,7 @@ html: `<!DOCTYPE html>
                                       
                                        <p>Inicie sesion con: </p>
                                        <p>Usuario: ${user.usern} </p>
-                                       <p>Contraseña: ${user.password} </p>
+                                       <p>Contraseña: ${user.passn} </p>
                                        <p
                                        style="margin:0;font-size:28px;line-height:16px;font-family:Arial,sans-serif;color:#19bbe4;">
                                        <a href="http://www.example.com" style="color:#1fd4cb;text-decoration:underline;">Comenzar</a>

@@ -1,57 +1,104 @@
 <nav class="navbar navbar-expand-lg navbar-light shadow-lg" style="background-color: #0c0846;">
-  <div class="container ">
-    <a class="navbar-brand " style="color:rgb(236, 236, 236);" href="/">🩺 MedicalSignal 🩺</a>
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a href="/signin" class="nav-link font-weight-bold  shadow-lg  refer" style="color: white;"><i
-            class="fa-solid fa-house-user"></i> Inicio</a>
-      </li>
-      <li class="nav-item">
-        <a href="/profile" class="nav-link font-weight-bold  shadow-lg  refer" style="color: rgb(247, 240, 240);"><i
-            class="fa-solid fa-user-doctor"></i> Perfil</a>
-      </li>
-      <li class="nav-item">
-        <a href="/list" class="nav-link font-weight-bold  shadow-lg  refer" style="color: white;"><i
-            class="fa-solid fa-kit-medical"></i> Pacientes</a>
-      </li>
-    </ul>
-    <ul class="navbar-nav">
-      <div class="dropdown show" style="padding-left: 5%;">
-        <a class=" mr-4" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-          style="color: black;">
-          <img src="/img/equipo-medico.png" alt="logo" class="mx-auto m-2 rounded-circle"
-            style="width:35px ; border: solid rgb(103, 192, 214);">
-        </a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="/Settings"><i class="fa-solid fa-gear"></i> Configuracion</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="/logout"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesion</a>
-        </div>
-      </div>
-    </ul>
-  </div>
+   <div class="container ">
+      <a class="navbar-brand " style="color:rgb(236, 236, 236);" href="/">🩺 MedicalSignal 🩺</a>
+      <ul class="navbar-nav ml-auto">
+         {{!-- <li class="nav-item">
+            <a href="/signin" class="nav-link font-weight-bold  shadow-lg  refer" style="color: white;"><i
+                  class="fa-solid fa-house-user"></i> Inicio</a>
+         </li> --}}
+         <li class="nav-item">
+            <a href="/profile" class="nav-link font-weight-bold  shadow-lg  refer" style="color: rgb(247, 240, 240);"><i
+                  class="fa-solid fa-user-doctor"></i> Perfil</a>
+         </li>
+         <li class="nav-item">
+            <a href="/list" class="nav-link font-weight-bold  shadow-lg  refer" style="color: white;"><i
+                  class="fa-solid fa-kit-medical"></i> Pacientes</a>
+         </li>
+      </ul>
+      <ul class="navbar-nav">
+         <div class="dropdown show" style="padding-left: 5%;">
+            <a class=" mr-4" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+               style="color: black;">
+               <img src="/img/equipo-medico.png" alt="logo" class="mx-auto m-2 rounded-circle"
+                  style="width:35px ; border: solid rgb(103, 192, 214);">
+            </a>
+            <div class="dropdown-menu">
+               <a class="dropdown-item" href="/Settings"><i class="fa-solid fa-gear"></i> Configuracion</a>
+               <div class="dropdown-divider"></div>
+               <a class="dropdown-item" href="/logout"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesion</a>
+            </div>
+         </div>
+      </ul>
+   </div>
 </nav>
 
-
-<div class="container">
-
-
-   <h1 class="row header">Monitor de signos vitales </h1>
-
-   <div id="signal" class="row">
-      <div class="col-sm-8 " id="target"></div>
+<body class="views">
 
 
-      <div class="col-sm-2 p-4 ">
+   <h1 style="color: white; position:center"> Monitor de signos Vitales</h1>
+
+   <div class="card" style="color: blue; background-color: rgb(2, 27, 37);text-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue; width:25%;">
+
+      <div class="card-body text-center" style="margin: 0%; padding: 2%; ">
+         <div class="form-row p-2 border border-bottom-0 border-dark">
+            <div class="col">
+               <label for="Paciente">Paciente: </label>
+               <input type="text" class="form-control" placeholder="Identificación" name="Paciente"
+                  value="{{data.name}}">
+            </div>
+
+            <div class="col">
+               <label for="Paciente">Identificación: </label>
+               <input type="text" class="form-control" placeholder="Identificación" name="Paciente"
+                  value="{{data.ident}}">
+            </div>
+
+            <div class="col">
+               <label for="Paciente">Edad: </label>
+               <input type="text" class="form-control" placeholder="Identificación" name="Paciente"
+                  value="{{data.age}}">
+            </div>
+         </div>
+
+      </div>
+
+   </div>
+
+
+
+   <div class="gridcontainer">
+
+
+      <div class="one" id="target"></div>
+
+
+      <div class="two">
          <div class="row p-2" style="background-color:rgb(6, 52, 70);">
 
             <div class="card" id="card"
                style="color: blue; background-color: rgb(2, 27, 37);text-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue;">
                <h5>Pulse</h5>
                <h6>BPM</h6>
-               <div class="card-body text-center">
+               <div class="card-body text-center" style="margin: 0%; padding: 0%; ">
 
-                  <h1 id="pl">1</h1>
+                  <h1 id="pl" style="font-size: 100px ;">1</h1>
+
+
+               </div>
+
+            </div>
+
+         </div>
+
+         <div class="row p-2" style="background-color:rgb(6, 52, 70);">
+
+            <div class="card" id="card"
+               style="color: blue; background-color: rgb(2, 27, 37);text-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue;">
+               <h5>Heart rate</h5>
+               <h6>BPM</h6>
+               <div class="card-body text-center" style="margin: 0%; padding: 0%; ">
+
+                  <h1 id="hr" style="font-size: 100px ;">1</h1>
 
 
                </div>
@@ -66,9 +113,9 @@
                style="color: green; background-color: rgb(2, 27, 37);text-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em green;">
                <h5>Sp02</h5>
                <h6>% blood oxygen saturation</h6>
-               <div class="card-body text-center">
+               <div class="card-body text-center" style="margin: 0%; padding: 0%; ">
 
-                  <h1 id="sp">2</h1>
+                  <h1 id="sp" style="font-size: 100px ;">2</h1>
 
                </div>
 
@@ -83,9 +130,9 @@
                style="color: rgb(224, 13, 13); background-color: rgb(2, 27, 37); text-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em red;">
                <h5>Respiration</h5>
                <h6>RPM</h6>
-               <div class="card-body text-center">
+               <div class="card-body text-center" style="margin: 0%; padding: 0%; ">
 
-                  <h1 id="rp">3</h1>
+                  <h1 id="rp" style="font-size: 100px ;">3</h1>
 
 
                </div>
@@ -104,9 +151,7 @@
    </div>
 
 
-
-</div>
-
+</body>
 
 
 
@@ -121,9 +166,12 @@
    const ecgdata = {{ encodeMyString data.ecg }}
    const ppgdata = {{ encodeMyString data.ppg }}
    const respdata = {{ encodeMyString data.resp }}
+   const ifldata = {{ encodeMyString data.ifl }}
+   const sounddata = {{ encodeMyString data.sound }}
    const spo2data = {{ encodeMyString data.spo2 }}
    const pulsdata = {{ encodeMyString data.puls }}
    const rpdata = {{ encodeMyString data.rp }}
+   const hrdata = {{ encodeMyString data.hr }}
 
 
 
@@ -168,6 +216,22 @@
          yStart: -1955,
          yEnd: 1195,
       },
+      {
+         shortName: "IFL",
+         name: "Airflow",
+         dataSet: ifldata,
+         color: "#00ff00",
+         yStart: -1955,
+         yEnd: 1195,
+      },
+      {
+         shortName: "Sound",
+         name: "Respiratory Sound",
+         dataSet: sounddata,
+         color: "#00ff00",
+         yStart: -1955,
+         yEnd: 1195,
+      },
    ];
 
    const dashboard = lightningChart()
@@ -200,6 +264,20 @@
       rowSpan: 1
    })
 
+   const chart4 = dashboard.createChartXY({
+      columnIndex: 0,
+      rowIndex: 3,
+      columnSpan: 1,
+      rowSpan: 1
+   })
+
+   const chart5 = dashboard.createChartXY({
+      columnIndex: 0,
+      rowIndex: 4,
+      columnSpan: 1,
+      rowSpan: 1
+   })
+
 
    chart1.setTitle('ECG/EKG')
    chart1.getDefaultAxisY()
@@ -209,7 +287,7 @@
 
    chart1.getDefaultAxisX()
       .setTitle('miliseconds')
-      .setInterval(0, 600)
+      .setInterval(0, 1)
       .setScrollStrategy(AxisScrollStrategies.progressive)
 
    const series1 = chart1.addLineSeries({
@@ -224,7 +302,7 @@
 
 
    createSampledDataGenerator(ecgdata, 1, 10)
-      .setSamplingFrequency(1)
+      .setSamplingFrequency(1000)
       .setInputData(ecgdata)
       .generate()
       .setStreamBatchSize(10)
@@ -243,12 +321,12 @@
    chart2.setTitle('PPG')
    chart2.getDefaultAxisY()
       .setTitle('mV')
-      .setInterval(0, 1.5)
+      .setInterval(0, 1)
       .setScrollStrategy(AxisScrollStrategies.expansion)
 
    chart2.getDefaultAxisX()
       .setTitle('miliseconds')
-      .setInterval(0, 600)
+      .setInterval(0, 1)
       .setScrollStrategy(AxisScrollStrategies.progressive)
 
 
@@ -264,7 +342,7 @@
 
 
    createSampledDataGenerator(ppgdata, 1, 10)
-      .setSamplingFrequency(1)
+      .setSamplingFrequency(1000)
       .setInputData(ppgdata)
       .generate()
       .setStreamBatchSize(10)
@@ -280,12 +358,12 @@
    chart3.setTitle('RESP')
    chart3.getDefaultAxisY()
       .setTitle('mV')
-      .setInterval(0, 1.5)
+      .setInterval(0, 1)
       .setScrollStrategy(AxisScrollStrategies.expansion)
 
    chart3.getDefaultAxisX()
       .setTitle('miliseconds')
-      .setInterval(0, 1000)
+      .setInterval(0, 1)
       .setScrollStrategy(AxisScrollStrategies.progressive)
 
 
@@ -301,11 +379,11 @@
 
 
    createSampledDataGenerator(respdata, 1, 10)
-      .setSamplingFrequency(1)
+      .setSamplingFrequency(500)
       .setInputData(respdata)
       .generate()
       .setStreamBatchSize(10)
-      .setStreamInterval(50)
+      .setStreamInterval(100)
       .setStreamRepeat(true)
       .toStream()
       .forEach(respdata => {
@@ -314,16 +392,89 @@
       })
 
 
+   chart4.setTitle('IFL')
+   chart4.getDefaultAxisY()
+      .setTitle('mV')
+      .setInterval(-150, 150)
+      .setScrollStrategy(AxisScrollStrategies.expansion)
+
+   chart4.getDefaultAxisX()
+      .setTitle('miliseconds')
+      .setInterval(0, 5)
+      .setScrollStrategy(AxisScrollStrategies.progressive)
+
+   const series4 = chart4.addLineSeries({
+      dataPattern: {
+
+         pattern: 'ProgressiveX',
+
+         regularProgressiveStep: true,
+      }
+   })
+
+
+
+   createSampledDataGenerator(ifldata, 1, 10)
+      .setSamplingFrequency(500)
+      .setInputData(ifldata)
+      .generate()
+      .setStreamBatchSize(10)
+      .setStreamInterval(120)
+      .setStreamRepeat(true)
+      .toStream()
+      .forEach(ifldata => {
+
+         series4.add({ x: ifldata.timestamp, y: ifldata.data.y })
+      })
+
+
+   chart5.setTitle('Respiratory Sound')
+   chart5.getDefaultAxisY()
+      .setTitle('mV')
+      .setInterval(-0.5, 0.5)
+      .setScrollStrategy(AxisScrollStrategies.expansion)
+
+   chart5.getDefaultAxisX()
+      .setTitle('miliseconds')
+      .setInterval(0, 2)
+      .setScrollStrategy(AxisScrollStrategies.progressive)
+
+   const series5 = chart5.addLineSeries({
+      dataPattern: {
+
+         pattern: 'ProgressiveX',
+
+         regularProgressiveStep: true,
+      }
+   })
+
+
+
+   createSampledDataGenerator(sounddata, 1, 10)
+      .setSamplingFrequency(100000)
+      .setInputData(sounddata)
+      .generate()
+      .setStreamBatchSize(500)
+      .setStreamInterval(10)
+      .setStreamRepeat(true)
+      .toStream()
+      .forEach(sounddata => {
+
+         series5.add({ x: sounddata.timestamp, y: sounddata.data.y })
+      })
+
 
 
    let displayIndex1 = 0;
    let displayIndex2 = 0;
    let displayIndex3 = 0;
+   let displayIndex4 = 0;
    let time = document.getElementById('time');
 
    let elem1 = document.getElementById('sp');
    let elem2 = document.getElementById('pl');
    let elem3 = document.getElementById('rp');
+   let elem4 = document.getElementById('hr');
    let delay = 1000; // 1 second delay
 
    setInterval(() => {
@@ -336,12 +487,15 @@
       if (elem3) {
          elem3.innerHTML = rpdata[displayIndex3];
       }
+      if (elem4) {
+         elem4.innerHTML = hrdata[displayIndex4];
+      }
 
       // Move to the next item in dialog
       displayIndex1++;
       displayIndex2++;
       displayIndex3++;
-
+      displayIndex4++;
 
       // If display index goes out of index range, start again
       if (displayIndex1 >= spo2data.length) {
@@ -353,72 +507,75 @@
       if (displayIndex3 >= rpdata.length) {
          displayIndex3 = 0;
       }
+      if (displayIndex4 >= hrdata.length) {
+         displayIndex4 = 0;
+      }
    }, delay);
     /*const {
-      lightningChart,
-      AxisScrollStrategies,
-      Themes
-  } = lcjs
+lightningChart,
+AxisScrollStrategies,
+Themes
+} = lcjs
 
-  // Import data-generators from 'xydata'-library.
-  const {
-      createSampledDataGenerator
-  } = xydata
+// Import data-generators from 'xydata'-library.
+const {
+createSampledDataGenerator
+} = xydata
 
-  // Create a XY Chart.
-  const chart = lightningChart().ChartXY({
-      theme: Themes.sunset,
-      container: 'target',
-  }).setTitle('ECG')
+// Create a XY Chart.
+const chart = lightningChart().ChartXY({
+theme: Themes.sunset,
+container: 'target',
+}).setTitle('ECG')
 
-  // Create line series optimized for regular progressive X data.
-  const series = chart.addLineSeries({
-      dataPattern: {
-          // pattern: 'ProgressiveX' => Each consecutive data point has increased X coordinate.
-          pattern: 'ProgressiveX',
-          // regularProgressiveStep: true => The X step between each consecutive data point is regular (for example, always `1.0`).
-          regularProgressiveStep: true,
-      }
-  })
-      // Destroy automatically outscrolled data (old data becoming out of scrolling axis range).
-      // Actual data cleaning can happen at any convenient time (not necessarily immediately when data goes out of range).
-      .setMaxPointCount(10000)
-      .setMouseInteractions(false)
-
-
-  const point = {{ encodeMyString data.ecg }}
-  console.log(point)
-  const resultx = point.map((obj) => Object.values(obj)[0]);
-  const resulty = point.map((obj) => Object.values(obj)[1]);
-
-  var maxX = Math.max.apply(Math, resultx);
-  var minX = Math.min.apply(Math, resultx);
-  var maxY = Math.max.apply(Math, resulty);
-  var minY = Math.min.apply(Math, resulty);
-  // Setup view nicely.
-  chart.getDefaultAxisY()
-      .setTitle('mV')
-      .setInterval(minY - 0.10, maxY + 0.10)
-      .setScrollStrategy(AxisScrollStrategies.expansion)
-
-  chart.getDefaultAxisX()
-      .setTitle('milliseconds')
-      .setInterval(minX, 3000)
-      .setScrollStrategy(AxisScrollStrategies.progressive)
+// Create line series optimized for regular progressive X data.
+const series = chart.addLineSeries({
+dataPattern: {
+    // pattern: 'ProgressiveX' => Each consecutive data point has increased X coordinate.
+    pattern: 'ProgressiveX',
+    // regularProgressiveStep: true => The X step between each consecutive data point is regular (for example, always `1.0`).
+    regularProgressiveStep: true,
+}
+})
+// Destroy automatically outscrolled data (old data becoming out of scrolling axis range).
+// Actual data cleaning can happen at any convenient time (not necessarily immediately when data goes out of range).
+.setMaxPointCount(10000)
+.setMouseInteractions(false)
 
 
+const point = {{ encodeMyString data.ecg }}
+console.log(point)
+const resultx = point.map((obj) => Object.values(obj)[0]);
+const resulty = point.map((obj) => Object.values(obj)[1]);
 
-  createSampledDataGenerator(point, 1, 10)
-      .setSamplingFrequency(1)
-      .setInputData(point)
-      .generate()
-      .setStreamBatchSize(48)
-      .setStreamInterval(50)
-      .setStreamRepeat(true)
-      .toStream()
-      .forEach(point => {
-          // Push the created points to the series.
-          series.add({ x: point.timestamp, y: point.data.y })
-      })*/
+var maxX = Math.max.apply(Math, resultx);
+var minX = Math.min.apply(Math, resultx);
+var maxY = Math.max.apply(Math, resulty);
+var minY = Math.min.apply(Math, resulty);
+// Setup view nicely.
+chart.getDefaultAxisY()
+.setTitle('mV')
+.setInterval(minY - 0.10, maxY + 0.10)
+.setScrollStrategy(AxisScrollStrategies.expansion)
+
+chart.getDefaultAxisX()
+.setTitle('milliseconds')
+.setInterval(minX, 3000)
+.setScrollStrategy(AxisScrollStrategies.progressive)
+
+
+
+createSampledDataGenerator(point, 1, 10)
+.setSamplingFrequency(1)
+.setInputData(point)
+.generate()
+.setStreamBatchSize(48)
+.setStreamInterval(50)
+.setStreamRepeat(true)
+.toStream()
+.forEach(point => {
+    // Push the created points to the series.
+    series.add({ x: point.timestamp, y: point.data.y })
+})*/
 
 </script>

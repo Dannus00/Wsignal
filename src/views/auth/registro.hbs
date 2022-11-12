@@ -2,10 +2,10 @@
   <div class="container ">
     <a class="navbar-brand " style="color:rgb(236, 236, 236);" href="/">🩺 MedicalSignal 🩺</a>
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
+     {{!--  <li class="nav-item">
         <a href="/signin" class="nav-link font-weight-bold  shadow-lg  refer" style="color: white;"><i
             class="fa-solid fa-house-user"></i> Inicio</a>
-      </li>
+      </li> --}}
       <li class="nav-item">
         <a href="/profile" class="nav-link font-weight-bold  shadow-lg  refer" style="color: rgb(247, 240, 240);"><i
             class="fa-solid fa-user-doctor"></i> Perfil</a>
@@ -65,6 +65,18 @@
             <option>-----</option>
             <option>Masculino</option>
             <option>Femenino</option>
+          </select>
+        </div>
+    {{!--  <span class="indicator healt"></span>
+        <span class="indicator aler"></span> 
+        <span class="indicator dead"></span>  --}}
+        <div class="col">
+          <label for="Status"><i class="fa-solid fa-thermometer"></i> Estado del Paciente</label>
+          <select class="form-control shadow-lg border border-dark" id="Status" name="status">
+            <option>-----</option>
+            <option style="color: rgb(71, 165, 42);" value="indicator healt">Estable</option>
+            <option style="color: rgb(165, 165, 37);" value="indicator aler">Alerta</option>
+            <option style="color: red;" value="indicator dead"> Urgencias</option>
           </select>
         </div>
       </div>
@@ -200,32 +212,46 @@
 
 
             let ppgdata = dat.map(arr => {
-              let time = Number(arr['Time [s]'])
-              let re = Number(arr[' PLETH'])
+              let time = Number(arr["Time [s]"])
+              let re = Number(arr["PLETH"])
 
               return { x: time, y: re }
             });
 
             let ecgdata = dat.map(arr => {
-              let time = Number(arr['Time [s]'])
-              let re = Number(arr[" II"])
+              let time = Number(arr["Time [s]"])
+              let re = Number(arr["ECG"])
 
               return { x: time, y: re }
             });
 
             let respdata = dat.map(arr => {
-              let time = Number(arr['Time [s]'])
-              let re = Number(arr[" RESP"])
+              let time = Number(arr["Time [s]"])
+              let re = Number(arr["RESP"])
 
               return { x: time, y: re }
             });
 
-            console.log(ecgdata)
-            console.log(ppgdata)
-            console.log(respdata)
 
-            let vector = [ecgdata, ppgdata, respdata]
-            console.log(vector)
+            let ifldata = dat.map(arr => {
+              let time = Number(arr["Seconds"])
+              let re = Number(arr["IFL"])
+
+              return { x: time, y: re }
+            });
+
+
+             let sounddata = dat.map(arr => {
+              let time = Number(arr["TimeSound"])
+              let re = Number(arr["SignalSound"])
+
+              return { x: time, y: re }
+            });
+
+            
+
+            let vector = [ecgdata, ppgdata, respdata,ifldata,sounddata]
+           
 
 
 
@@ -306,8 +332,14 @@
 
               return re
             });
+             let hr = dat.map(arr => {
 
-            let vector = [sp02, puls, rp]
+              let re = Number(arr[' HR'])
+
+              return re
+            });
+
+            let vector = [sp02, puls, rp, hr]
 
 
 
@@ -334,6 +366,7 @@
 
         document.getElementById("file1").addEventListener('change', read);
         document.getElementById("file2").addEventListener('change', read2);
+        
       </script>
 
 
