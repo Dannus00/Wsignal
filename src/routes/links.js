@@ -6,7 +6,7 @@ const {roladmin,roldoc,roluser} = require('../lib/roles')
 const tiempoTranscurrido = Date.now();
 const hoy = new Date(tiempoTranscurrido);
 let ide 
-
+let sh
 
 
 router.get('/list',isLoggedIn, roldoc(["doctor"]) ,async(req,res)=>{
@@ -46,12 +46,24 @@ router.post('/edit/:id', isLoggedIn, async (req,res)=>{
     const { id } = req.params;
     
     const {name, lastname,ident,gender,status,age,bt,date,oc,ec,phone,address,pr } = req.body;
+
+    if (status == "indicator healt"){
+           
+        sh = 1
+    }else if(status == "indicator aler"){
+        sh = 2
+    }else {
+        sh = 3
+    }
+
+
     const newLink = {
          name,
          lastname,
          ident,
          gender,
          status,
+         sh,
          age,
          bt,
          date,
@@ -64,7 +76,7 @@ router.post('/edit/:id', isLoggedIn, async (req,res)=>{
     
     await pool.query('UPDATE pacientes set ? WHERE id =?', [newLink,id]);
     req.flash('Success', 'Paciente saved Successfully')
-    res.redirect('/profile');
+    res.redirect('/list');
 })
 
 router.get('/view/:id',isLoggedIn, roldoc(["doctor"]) ,async (req,res) =>{

@@ -37,7 +37,7 @@
 
    <h1  class="titulo" style="color: white;"> Monitor de signos Vitales</h1>
 
-   <div class="card" id="principal" style="color: blue; background-color: rgb(2, 27, 37);text-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue;">
+   <div class="card" id="principal" style="color: rgb(228, 228, 235); background-color: rgb(2, 27, 37);text-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue;">
 
       <div class="card-body text-center" style="margin: 0%; padding: 2%; ">
          <div class="form-row p-2 border border-bottom-0 border-dark">
@@ -282,7 +282,7 @@
    chart1.setTitle('ECG/EKG')
    chart1.getDefaultAxisY()
       .setTitle('mV')
-      .setInterval(0, 1)
+      .setInterval(0, 0.7)
       .setScrollStrategy(AxisScrollStrategies.expansion)
 
    chart1.getDefaultAxisX()
@@ -451,7 +451,7 @@
 
 
    createSampledDataGenerator(sounddata, 1, 10)
-      .setSamplingFrequency(100000)
+      .setSamplingFrequency(50000)
       .setInputData(sounddata)
       .generate()
       .setStreamBatchSize(500)

@@ -15,19 +15,18 @@
     100% {background-position: 15% 50%;}
   }
 #bod{
-    background-image: url("/img/csg.jpg");
-    background-repeat: no-repeat;
-    background-size: cover ;
-    animation: pan 6s infinite alternate linear; 
-  
-      font-family: sans-serif;
-      
-      overflow: auto;
-      height: 100vh;
-      width: auto;
-      margin: 0%;
-      padding: 0%;
+  background-image: url("/img/csg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover ;
+  animation: pan 6s infinite alternate linear; 
 
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    
+    overflow: auto;
+    height: 100vh;
+    width: auto;
+    margin: 0%;
+    padding: 0%;
 
 }
 
